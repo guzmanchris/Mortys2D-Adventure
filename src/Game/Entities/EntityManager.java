@@ -1,7 +1,7 @@
 package Game.Entities;
 
 import Game.Entities.Creatures.Player;
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 import java.util.ArrayList;

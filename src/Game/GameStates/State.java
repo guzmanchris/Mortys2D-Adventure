@@ -1,6 +1,6 @@
 package Game.GameStates;
 
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 

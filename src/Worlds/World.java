@@ -1,14 +1,13 @@
-package worlds;
+package Worlds;
 
 import Game.Entities.Creatures.Player;
 import Game.Entities.EntityManager;
 import Game.Entities.Statics.Rock;
 import Game.Entities.Statics.Tree;
-import Game.items.Item;
-import Game.items.ItemManager;
-import Game.tiles.Tile;
+import Game.Items.ItemManager;
+import Game.Tiles.Tile;
 import Resources.Utils;
-import main.Handler;
+import Main.Handler;
 
 import javax.sound.sampled.*;
 import java.awt.*;

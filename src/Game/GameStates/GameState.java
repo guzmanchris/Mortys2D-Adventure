@@ -1,7 +1,7 @@
 package Game.GameStates;
 
-import main.Handler;
-import worlds.World;
+import Main.Handler;
+import Worlds.World;
 
 import java.awt.*;
 

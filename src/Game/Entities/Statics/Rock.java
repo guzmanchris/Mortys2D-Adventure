@@ -1,9 +1,9 @@
 package Game.Entities.Statics;
 
-import Game.items.Item;
-import Game.tiles.Tile;
+import Game.Items.Item;
+import Game.Tiles.Tile;
 import Resources.Images;
-import main.Handler;
+import Main.Handler;
 
 import javax.sound.sampled.*;
 import java.awt.*;

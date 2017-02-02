@@ -1,8 +1,6 @@
-package Game.tiles;
+package Game.Tiles;
 
 import Resources.Images;
-
-import java.awt.image.BufferedImage;
 
 /**
  * Created by Elemental on 1/1/2017.

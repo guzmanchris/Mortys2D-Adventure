@@ -1,4 +1,4 @@
-package main;
+package Main;
 
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
@@ -7,7 +7,7 @@ import Inputs.KeyManager;
 import Inputs.MouseManager;
 import Resources.GameCamera;
 import Resources.Images;
-import display.Display;
+import Display.DisplayScreen;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -16,7 +16,7 @@ import java.awt.image.BufferStrategy;
  * Created by Elemental on 12/10/2016.
  */
 public class Game implements Runnable {
-    private Display display;
+    private DisplayScreen display;
     private int width, height;
     public String title;
 
@@ -51,7 +51,7 @@ public class Game implements Runnable {
     }
 
     private void init(){
-        display = new Display(title, width, height);
+        display = new DisplayScreen(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         display.getFrame().addMouseListener(mouseManager);
         display.getFrame().addMouseMotionListener(mouseManager);

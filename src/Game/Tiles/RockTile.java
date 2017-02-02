@@ -1,6 +1,4 @@
-package Game.tiles;
-
-import Resources.Images;
+package Game.Tiles;
 
 import java.awt.image.BufferedImage;
 

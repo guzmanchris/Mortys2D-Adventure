@@ -1,4 +1,4 @@
-package Game.tiles;
+package Game.Tiles;
 
 import Resources.Images;
 

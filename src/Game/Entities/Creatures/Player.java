@@ -1,16 +1,13 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
-import Game.GameStates.GameState;
-import Game.inventory.Inventory;
+import Game.Inventories.Inventory;
 import Resources.Animation;
 import Resources.Images;
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
-import static java.awt.event.KeyEvent.*;
 
 /**
  * Created by Elemental on 1/1/2017.

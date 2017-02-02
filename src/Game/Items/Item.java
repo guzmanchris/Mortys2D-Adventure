@@ -1,7 +1,7 @@
-package Game.items;
+package Game.Items;
 
 import Resources.Images;
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

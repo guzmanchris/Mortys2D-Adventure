@@ -3,13 +3,11 @@ package Game.GameStates;
 
 
 import Resources.Images;
-import UI.ClickListlener;
 import UI.UIImageButton;
 import UI.UIManager;
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Created by Elemental on 12/10/2016.

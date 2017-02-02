@@ -1,7 +1,7 @@
 package Game.Entities.Statics;
 
 import Game.Entities.EntityBase;
-import main.Handler;
+import Main.Handler;
 
 /**
  * Created by Elemental on 1/1/2017.

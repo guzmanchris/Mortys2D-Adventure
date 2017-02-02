@@ -1,9 +1,7 @@
 package Game.Entities;
 
-import Game.GameStates.GameState;
-import Game.tiles.Tile;
 import Resources.Images;
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 

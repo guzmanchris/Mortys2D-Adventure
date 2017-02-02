@@ -1,6 +1,6 @@
 package UI;
 
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

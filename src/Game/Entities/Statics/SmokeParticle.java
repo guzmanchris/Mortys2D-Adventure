@@ -1,11 +1,9 @@
 package Game.Entities.Statics;
 
-import Resources.Animation;
 import Resources.Images;
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 /**
  * Created by Elemental on 1/2/2017.

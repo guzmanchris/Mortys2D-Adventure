@@ -1,9 +1,8 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
-import Game.GameStates.GameState;
-import Game.tiles.Tile;
-import main.Handler;
+import Game.Tiles.Tile;
+import Main.Handler;
 
 /**
  * Created by Elemental on 1/1/2017.

@@ -1,10 +1,9 @@
-package main;
+package Main;
 
-import Game.inventory.Inventory;
 import Inputs.KeyManager;
 import Resources.GameCamera;
 import Inputs.MouseManager;
-import worlds.World;
+import Worlds.World;
 
 /**
  * Created by Elemental on 1/1/2017.

@@ -1,7 +1,4 @@
-package main;
-
-import javax.swing.*;
-import java.awt.*;
+package Main;
 
 /**
  * Created by Elemental on 12/10/2016.

@@ -1,6 +1,6 @@
-package Game.items;
+package Game.Items;
 
-import main.Handler;
+import Main.Handler;
 
 import java.awt.*;
 import java.util.ArrayList;
