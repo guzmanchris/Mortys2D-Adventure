@@ -2,6 +2,7 @@ package Worlds;
 
 import Game.Entities.Creatures.Player;
 import Game.Entities.EntityManager;
+import Game.Entities.Statics.Door;
 import Game.Entities.Statics.Rock;
 import Game.Entities.Statics.Tree;
 import Game.Items.ItemManager;
@@ -50,6 +51,7 @@ public class World {
         entityManager.addEntity(new Rock(handler, 88, 1345));
         entityManager.addEntity(new Tree(handler, 77, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
+        entityManager.addEntity(new Door(handler, 100, 0));
 
         loadWorld(path);
 

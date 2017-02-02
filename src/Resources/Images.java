@@ -24,6 +24,9 @@ public class Images {
     public static BufferedImage[] numbers;
     public static BufferedImage inventory;
     public static BufferedImage title;
+    public static BufferedImage door;
+    public static BufferedImage E;
+    public static BufferedImage EP;
 
 
     public Images() {
@@ -50,6 +53,9 @@ public class Images {
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
+            door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
+            E = ImageIO.read(getClass().getResourceAsStream("/Sheets/E.png"));
+            EP = ImageIO.read(getClass().getResourceAsStream("/Sheets/EP.png"));
 
             blocks[0] = ImageIO.read(getClass().getResourceAsStream("/Blocks/Slime.png"));
 

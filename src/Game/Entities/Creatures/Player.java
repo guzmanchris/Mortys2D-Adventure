@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.Entities.Statics.Door;
 import Game.Inventories.Inventory;
 import Resources.Animation;
 import Resources.Images;
@@ -176,4 +177,6 @@ public class Player extends CreatureBase {
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
+
+
 }

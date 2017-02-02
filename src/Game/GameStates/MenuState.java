@@ -30,6 +30,7 @@ public class MenuState extends State {
 
     @Override
     public void tick() {
+        handler.getMouseManager().setUimanager(uiManager);
         uiManager.tick();
 
         // Temporarily just go directly to the GameState, skip the menu state!
@@ -45,5 +46,6 @@ public class MenuState extends State {
         uiManager.Render(g);
 
     }
+
 
 }
