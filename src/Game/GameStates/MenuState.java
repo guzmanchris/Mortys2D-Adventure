@@ -1,0 +1,51 @@
+package Game.GameStates;
+
+
+
+import Resources.Images;
+import UI.ClickListlener;
+import UI.UIImageButton;
+import UI.UIManager;
+import main.Handler;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+
+/**
+ * Created by Elemental on 12/10/2016.
+ */
+public class MenuState extends State {
+
+    private UIManager uiManager;
+
+    public MenuState(Handler handler) {
+        super(handler);
+        uiManager = new UIManager(handler);
+        handler.getMouseManager().setUimanager(uiManager);
+
+
+        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2-32, 128, 64, Images.butstart, () -> {
+            handler.getMouseManager().setUimanager(null);
+            State.setState(handler.getGame().gameState);
+        }));
+    }
+
+    @Override
+    public void tick() {
+        uiManager.tick();
+
+        // Temporarily just go directly to the GameState, skip the menu state!
+        //handler.getMouseManager().setUimanager(null);
+        //State.setState(handler.getGame().gameState);
+    }
+
+    @Override
+    public void render(Graphics g) {
+        g.setColor(Color.darkGray);
+        g.fillRect(0,0,handler.getWidth(),handler.getHeight());
+        g.drawImage(Images.title,0,0,800,600,null);
+        uiManager.Render(g);
+
+    }
+
+}
