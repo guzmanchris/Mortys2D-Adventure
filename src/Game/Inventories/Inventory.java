@@ -49,10 +49,6 @@ public class Inventory {
             return;
         }
 
-        //System.out.println("Inventory: ");
-        //for(Item i : inventoryItems){
-        //    System.out.println(i.getName() + "   "+ i.getCount());
-        //}
 
     }
 
