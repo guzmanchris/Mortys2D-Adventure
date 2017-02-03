@@ -5,7 +5,7 @@ package Main;
  */
 public class Launch {
     public static void main(String[] args) {
-        Game game = new Game("Tile Game!", 800, 600);
+        Game game = new Game("2DMagika", 800, 600);
         game.start();
 
     }

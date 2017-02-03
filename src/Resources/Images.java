@@ -1,6 +1,7 @@
 package Resources;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class Images {
 
     private static final int width = 32, height = 32;
     private static final int Bwidth = 64, Bheight = 64;
-
+    private static final int Rwidth = 56, Rheight = 93;
 
     public static BufferedImage[] blocks;
     public static BufferedImage[] player_right;
@@ -31,12 +32,15 @@ public class Images {
     public static BufferedImage[] Resume;
     public static BufferedImage[] BTitle;
     public static BufferedImage[] Options;
+    public static BufferedImage[] Runes;
+    public static ImageIcon icon;
 
 
     public Images() {
 
         SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
         SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/numsheet.png"));
+        SpriteSheet runesheet = new SpriteSheet(Images.loadImage("/Sheets/runes.png"));
 
 
 
@@ -52,6 +56,7 @@ public class Images {
         Resume = new BufferedImage[2];
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
+        Runes = new BufferedImage[36];
 
 
 
@@ -70,6 +75,19 @@ public class Images {
             BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
             Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
             Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+
+            //icon
+            icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
+
+            Runes[0]= runesheet.crop(Rwidth*0,Rheight*0,Rwidth,Rheight);//Runes
+            Runes[1]= runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight);
+            Runes[2]= runesheet.crop(Rwidth*2,Rheight*0,Rwidth,Rheight);
+            Runes[3]= runesheet.crop(Rwidth*3,Rheight*0,Rwidth,Rheight);
+            Runes[4]= runesheet.crop(Rwidth*4,Rheight*0,Rwidth,Rheight);
+            Runes[5]= runesheet.crop(Rwidth*5,Rheight*0,Rwidth,Rheight);
+            Runes[6]= runesheet.crop(Rwidth*6,Rheight*0,Rwidth,Rheight);
+            Runes[7]= runesheet.crop(Rwidth*7,Rheight*0,Rwidth,Rheight);
+
 
             blocks[0] = ImageIO.read(getClass().getResourceAsStream("/Blocks/Slime.png"));
 

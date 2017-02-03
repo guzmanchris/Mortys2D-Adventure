@@ -1,13 +1,18 @@
 package Display;
 
+import Resources.Images;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.net.URL;
 import javax.swing.*;
 
 public class DisplayScreen {
 
 	private JFrame frame;
 	private Canvas canvas;
+
+	private URL iconURL;
 	
 	private String title;
 	private int width, height;
@@ -16,7 +21,9 @@ public class DisplayScreen {
 		this.title = title;
 		this.width = width;
 		this.height = height;
-		
+
+
+
 		createDisplay();
 	}
 	
@@ -27,7 +34,11 @@ public class DisplayScreen {
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
+
+		iconURL = getClass().getResource("/Sheets/icon.png");
+		ImageIcon icon = new ImageIcon(iconURL);
+		frame.setIconImage(icon.getImage());
+
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width, height));
 		canvas.setMaximumSize(new Dimension(width, height));
