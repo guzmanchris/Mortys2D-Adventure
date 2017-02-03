@@ -1,11 +1,9 @@
 package Game.Entities.Statics;
 
 import Game.Entities.Creatures.Player;
-import Game.GameStates.MenuState;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
-import UI.UIManager;
 
 import java.awt.*;
 

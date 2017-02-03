@@ -4,11 +4,11 @@ import Game.Entities.EntityBase;
 import Game.Tiles.Tile;
 import Main.Handler;
 
-import java.awt.*;
-
 /**
  * Created by Elemental on 1/1/2017.
  */
+
+
 public abstract class CreatureBase extends EntityBase {
 
     public static final float DEFAULT_SPEED = 3.0f;

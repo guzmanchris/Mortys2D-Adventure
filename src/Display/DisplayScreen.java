@@ -2,8 +2,7 @@ package Display;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
-
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class DisplayScreen {
 
@@ -24,7 +23,7 @@ public class DisplayScreen {
 	private void createDisplay(){
 		frame = new JFrame(title);
 		frame.setSize(width, height);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);

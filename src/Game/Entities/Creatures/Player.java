@@ -1,18 +1,17 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
-import Game.Entities.Statics.Door;
 import Game.Inventories.Inventory;
 import Resources.Animation;
 import Resources.Images;
 import Main.Handler;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
  * Created by Elemental on 1/1/2017.
  */
+
 public class Player extends CreatureBase {
 
     //Animations
