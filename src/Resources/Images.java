@@ -27,6 +27,10 @@ public class Images {
     public static BufferedImage door;
     public static BufferedImage E;
     public static BufferedImage EP;
+    public static BufferedImage Pause;
+    public static BufferedImage[] Resume;
+    public static BufferedImage[] BTitle;
+    public static BufferedImage[] Options;
 
 
     public Images() {
@@ -45,6 +49,9 @@ public class Images {
         particleSmoke = new BufferedImage[3];
         items = new BufferedImage[3];
         numbers = new BufferedImage[21];
+        Resume = new BufferedImage[2];
+        BTitle = new BufferedImage[2];
+        Options = new BufferedImage[2];
 
 
 
@@ -54,8 +61,15 @@ public class Images {
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
-            E = ImageIO.read(getClass().getResourceAsStream("/Sheets/E.png"));
-            EP = ImageIO.read(getClass().getResourceAsStream("/Sheets/EP.png"));
+            E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
+            EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
+            Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
+            Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
+            Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));
+            BTitle[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitle.png"));
+            BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
+            Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
+            Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
 
             blocks[0] = ImageIO.read(getClass().getResourceAsStream("/Blocks/Slime.png"));
 

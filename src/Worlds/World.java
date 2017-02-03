@@ -5,6 +5,7 @@ import Game.Entities.EntityManager;
 import Game.Entities.Statics.Door;
 import Game.Entities.Statics.Rock;
 import Game.Entities.Statics.Tree;
+import Game.GameStates.State;
 import Game.Items.ItemManager;
 import Game.Tiles.Tile;
 import Resources.Utils;
@@ -24,6 +25,7 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
+    private int countP = 0;
     //Entities
     private EntityManager entityManager;
 
@@ -80,6 +82,12 @@ public class World {
     public void tick(){
         entityManager.tick();
         itemManager.tick();
+        countP++;
+        if(handler.getKeyManager().pbutt && countP>=60){
+            handler.getMouseManager().setUimanager(null);
+            countP=0;
+            State.setState(handler.getGame().pauseState);
+        }
     }
 
     public void render(Graphics g){
