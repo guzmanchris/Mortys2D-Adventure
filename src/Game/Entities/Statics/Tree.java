@@ -73,11 +73,23 @@ public class Tree extends StaticEntity {
 
     @Override
     public void die() {
-        handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y));
+        handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
 
     }
 
+    public void renderLife(Graphics g) {
+        if (beinghurt && count <=8){
+            if(count == 8){
+                count = 0;
+                beinghurt=false;
+            }
+
+            g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height+32)),42,42,null);
+            count++;
+
+        }
+    }
 
 
     public int getHealth() {

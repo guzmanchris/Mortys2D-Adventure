@@ -10,8 +10,9 @@ import java.awt.image.BufferedImage;
  * Created by Elemental on 1/2/2017.
  */
 public class Item {
-    public static final int ITEMWIDTH = 32, ITEMWEIGHT = 32;
+    public static int ITEMWIDTH = 32, ITEMWEIGHT = 32,DEFAULTCOUNT=1;
 
+    protected int width = 32, height = 32;
     protected Handler handler;
     protected BufferedImage texture;
     protected String name;
@@ -37,12 +38,26 @@ public class Item {
         this.texture=texture;
         this.id=id;
         this.name=name;
-        count = 1;
+        count = DEFAULTCOUNT;
 
         bounds = new Rectangle(x,y,ITEMWIDTH,ITEMWEIGHT);
 
         items[id]=this;
     }
+    public Item(BufferedImage texture, String name, int id,int height,int width){
+        this.texture=texture;
+        this.id=id;
+        this.name=name;
+        count = DEFAULTCOUNT;
+        this.width=width;
+        this.height=height;
+
+        bounds = new Rectangle(x,y,ITEMWIDTH,ITEMWEIGHT);
+
+        items[id]=this;
+    }
+
+
     public void tick(){
         if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f,0f).intersects(bounds)){
             pickedUp=true;
@@ -62,8 +77,9 @@ public class Item {
 
     }
 
-    public Item createNew(int x, int y){
+    public Item createNew(int x, int y,int count){
         Item i = new Item(texture,name,id);
+        i.setCount(count);
         i.setPosition(x,y);
         return i;
     }
@@ -136,5 +152,13 @@ public class Item {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 }
