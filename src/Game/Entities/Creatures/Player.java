@@ -2,6 +2,7 @@ package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
+import Game.Items.Item;
 import Resources.Animation;
 import Resources.Images;
 import Main.Handler;
@@ -23,7 +24,8 @@ public class Player extends CreatureBase {
     //Inventory
     private Inventory inventory;
 
-
+    int fcounter = 0;
+    Boolean fcactive=true;
 
     private int animWalkingSpeed = 150;
 
@@ -56,10 +58,37 @@ public class Player extends CreatureBase {
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
+
+        if(!fcactive){
+            fcounter++;
+        }
+        if(fcounter>=60){
+            fcounter=0;
+            fcactive=true;
+        }
+
+
         // Attack
-        checkAttacks();
+        if(handler.getKeyManager().attbut) {
+            checkAttacks();
+        }else if(handler.getKeyManager().fattbut){
+            fireAttack();
+        }
+
         //Inventory
         inventory.tick();
+    }
+
+    private void fireAttack() {
+            for (Item i : getInventory().getInventoryItems()) {
+                if (i.getName() == "Fire Rune"&&fcactive) {
+                    System.out.println("Burn");
+                    i.setCount(i.getCount() - 1);
+                    fcactive=false;
+                }
+            }
+
+
     }
 
     private void checkAttacks(){

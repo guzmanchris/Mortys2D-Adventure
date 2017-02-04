@@ -32,12 +32,7 @@ public class World {
     //Item
     private ItemManager itemManager;
 
-    //music
-    File audioFile;
-    AudioInputStream audioStream;
-    AudioFormat format;
-    DataLine.Info info;
-    Clip audioClip;
+
 
     public World(Handler handler, String path){
         this.handler = handler;
@@ -60,22 +55,7 @@ public class World {
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
         //music
-        try {
-            audioFile = new File("res/music/nature.wav");
-            audioStream = AudioSystem.getAudioInputStream(audioFile);
-            format = audioStream.getFormat();
-            info = new DataLine.Info(Clip.class, format);
-            audioClip = (Clip) AudioSystem.getLine(info);
-            audioClip.open(audioStream);
-            audioClip.start();
 
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
 
     }
 

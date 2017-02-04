@@ -2,6 +2,7 @@ package Game.GameStates;
 
 
 
+import Main.Game;
 import Resources.Images;
 import UI.UIImageButton;
 import UI.UIManager;
@@ -24,6 +25,7 @@ public class MenuState extends State {
 
         uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2-32, 128, 64, Images.butstart, () -> {
             handler.getMouseManager().setUimanager(null);
+            handler.getGame().reStart();
             State.setState(handler.getGame().gameState);
         }));
     }

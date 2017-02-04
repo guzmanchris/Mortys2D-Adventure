@@ -10,8 +10,11 @@ import Resources.GameCamera;
 import Resources.Images;
 import Display.DisplayScreen;
 
+import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by Elemental on 12/10/2016.
@@ -43,6 +46,13 @@ public class Game implements Runnable {
     //Handler
     private Handler handler;
 
+    //music
+    File audioFile;
+    AudioInputStream audioStream;
+    AudioFormat format;
+    DataLine.Info info;
+    Clip audioClip;
+
     public Game(String title, int width, int height){
 
         this.width = width;
@@ -71,6 +81,27 @@ public class Game implements Runnable {
         pauseState = new PauseState(handler);
 
         State.setState(menuState);
+
+        try {
+            audioFile = new File("res/music/nature.wav");
+            audioStream = AudioSystem.getAudioInputStream(audioFile);
+            format = audioStream.getFormat();
+            info = new DataLine.Info(Clip.class, format);
+            audioClip = (Clip) AudioSystem.getLine(info);
+            audioClip.open(audioStream);
+            audioClip.start();
+
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void reStart(){
+        gameState = new GameState(handler);
     }
 
     public synchronized void start(){

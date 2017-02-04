@@ -4,10 +4,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyManager implements KeyListener {
-	
+
 	private boolean[] keys,justPressed,cantPress;
 	public boolean up=false, down=false, left=false, right=false;
 	public boolean attbut=false;
+	public boolean fattbut=false;
 	public boolean pbutt=false;
 
 
@@ -18,7 +19,7 @@ public class KeyManager implements KeyListener {
 		cantPress = new boolean[keys.length];
 
 	}
-	
+
 	public void tick(){
 		for(int i =0; i < keys.length;i++){
 			if(cantPress[i] && !keys[i]){
@@ -37,8 +38,9 @@ public class KeyManager implements KeyListener {
 		down = keys[KeyEvent.VK_S];
 		left = keys[KeyEvent.VK_A];
 		right = keys[KeyEvent.VK_D];
-		
+
 		attbut = keys[KeyEvent.VK_E];
+		fattbut = keys[KeyEvent.VK_C];
 		pbutt = keys[KeyEvent.VK_ESCAPE];
 
 	}
@@ -59,7 +61,7 @@ public class KeyManager implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+
 	}
 
 	public boolean keyJustPressed(int keyCode){

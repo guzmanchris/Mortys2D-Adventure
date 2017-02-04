@@ -47,7 +47,7 @@ public class PauseState extends State {
         handler.getMouseManager().setUimanager(uiManager);
         uiManager.tick();
         count++;
-        if(handler.getKeyManager().pbutt && count>=30){
+        if(handler.getKeyManager().pbutt && count>=60){
             count=0;
 
             State.setState(handler.getGame().gameState);

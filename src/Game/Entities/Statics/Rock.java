@@ -9,6 +9,7 @@ import javax.sound.sampled.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by Elemental on 1/2/2017.
@@ -20,6 +21,8 @@ public class Rock extends StaticEntity {
     AudioFormat format;
     DataLine.Info info;
     Clip audioClip;
+    Random randint;
+    int RNGR;
 
     public Rock(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
@@ -28,6 +31,7 @@ public class Rock extends StaticEntity {
         bounds.y=0;
         bounds.width = 64;
         bounds.height = 64;
+
         try {
             audioFile = new File("res/music/Pickaxe.wav");
             audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -72,6 +76,13 @@ public class Rock extends StaticEntity {
 
     @Override
     public void die() {
+        randint=new Random();
+        RNGR=randint.nextInt(1) + 1;
+        System.out.println(RNGR);
         handler.getWorld().getItemManager().addItem(Item.rockItem.createNew((int)x + bounds.x,(int)y + bounds.y));
+        if(RNGR==1){
+            handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32)));
+        }
+
     }
 }
