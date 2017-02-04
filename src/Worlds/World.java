@@ -83,7 +83,7 @@ public class World {
         entityManager.tick();
         itemManager.tick();
         countP++;
-        if(handler.getKeyManager().pbutt && countP>=60){
+        if(handler.getKeyManager().pbutt && countP>=30){
             handler.getMouseManager().setUimanager(null);
             countP=0;
             State.setState(handler.getGame().pauseState);
