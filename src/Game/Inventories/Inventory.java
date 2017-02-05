@@ -31,6 +31,12 @@ public class Inventory {
 
     public void tick() {
 
+        for(Item i : inventoryItems){
+            if(i.getCount()==0){
+                inventoryItems.remove(inventoryItems.indexOf(i));
+                return;
+            }
+        }
 
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_Q)){
             active=!active;
@@ -54,12 +60,7 @@ public class Inventory {
         uiManager.Render(g);
         g.setColor(Color.white);
         renderItems(g);
-        for(Item i : inventoryItems){
-            if(i.getCount()==0){
-                inventoryItems.remove(inventoryItems.indexOf(i));
-                return;
-            }
-        }
+
 
     }
 

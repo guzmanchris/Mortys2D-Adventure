@@ -13,6 +13,7 @@ public class Images {
     private static final int width = 32, height = 32;
     private static final int Bwidth = 64, Bheight = 64;
     private static final int Rwidth = 56, Rheight = 93;
+    private static final int Fwidth = 512, Fheight = 197;
 
     public static BufferedImage[] blocks;
     public static BufferedImage[] player_right;
@@ -34,6 +35,11 @@ public class Images {
     public static BufferedImage[] Options;
     public static BufferedImage[] Runes;
     public static ImageIcon icon;
+    public static BufferedImage[] FireBallLeft;
+    public static BufferedImage[] FireBallRight;
+    public static BufferedImage[] FireBallUp;
+    public static BufferedImage[] FireBallDown;
+
 
 
     public Images() {
@@ -41,6 +47,10 @@ public class Images {
         SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
         SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/numsheet.png"));
         SpriteSheet runesheet = new SpriteSheet(Images.loadImage("/Sheets/runes.png"));
+        SpriteSheet FireBallsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBall.png"));
+        SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
+        SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
+        SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
 
 
 
@@ -57,6 +67,10 @@ public class Images {
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
         Runes = new BufferedImage[36];
+        FireBallLeft = new BufferedImage[6];
+        FireBallRight = new BufferedImage[6];
+        FireBallUp = new BufferedImage[6];
+        FireBallDown = new BufferedImage[6];
 
 
 
@@ -78,6 +92,38 @@ public class Images {
 
             //icon
             icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
+
+            //fireball left
+            FireBallLeft[0]= FireBallsheet.crop(Fwidth*0,Fheight*0,Fwidth,Fheight);
+            FireBallLeft[1]= FireBallsheet.crop(Fwidth*1,Fheight*0,Fwidth,Fheight);
+            FireBallLeft[2]= FireBallsheet.crop(Fwidth*2,Fheight*0,Fwidth,Fheight);
+            FireBallLeft[3]= FireBallsheet.crop(Fwidth*0,Fheight*1,Fwidth,Fheight);
+            FireBallLeft[4]= FireBallsheet.crop(Fwidth*1,Fheight*1,Fwidth,Fheight);
+            FireBallLeft[5]= FireBallsheet.crop(Fwidth*2,Fheight*1,Fwidth,Fheight);
+
+            //fireball right
+            FireBallRight[0]= FireBallRightsheet.crop(Fwidth*0,Fheight*0,Fwidth,Fheight);
+            FireBallRight[1]= FireBallRightsheet.crop(Fwidth*1,Fheight*0,Fwidth,Fheight);
+            FireBallRight[2]= FireBallRightsheet.crop(Fwidth*2,Fheight*0,Fwidth,Fheight);
+            FireBallRight[3]= FireBallRightsheet.crop(Fwidth*0,Fheight*1,Fwidth,Fheight);
+            FireBallRight[4]= FireBallRightsheet.crop(Fwidth*1,Fheight*1,Fwidth,Fheight);
+            FireBallRight[5]= FireBallRightsheet.crop(Fwidth*2,Fheight*1,Fwidth,Fheight);
+
+            //fireball up
+            FireBallUp[0]= FireBallUpsheet.crop(Fheight*1,Fwidth*0,Fheight,Fwidth);
+            FireBallUp[1]= FireBallUpsheet.crop(Fheight*1,Fwidth*1,Fheight,Fwidth);
+            FireBallUp[2]= FireBallUpsheet.crop(Fheight*1,Fwidth*2,Fheight,Fwidth);
+            FireBallUp[3]= FireBallUpsheet.crop(Fheight*0,Fwidth*0,Fheight,Fwidth);
+            FireBallUp[4]= FireBallUpsheet.crop(Fheight*0,Fwidth*1,Fheight,Fwidth);
+            FireBallUp[5]= FireBallUpsheet.crop(Fheight*0,Fwidth*2,Fheight,Fwidth);
+
+            //fireball down
+            FireBallDown[0]= FireBallDownsheet.crop(Fheight*1,Fwidth*0,Fheight,Fwidth);
+            FireBallDown[1]= FireBallDownsheet.crop(Fheight*1,Fwidth*1,Fheight,Fwidth);
+            FireBallDown[2]= FireBallDownsheet.crop(Fheight*1,Fwidth*2,Fheight,Fwidth);
+            FireBallDown[3]= FireBallDownsheet.crop(Fheight*0,Fwidth*0,Fheight,Fwidth);
+            FireBallDown[4]= FireBallDownsheet.crop(Fheight*0,Fwidth*1,Fheight,Fwidth);
+            FireBallDown[5]= FireBallDownsheet.crop(Fheight*0,Fwidth*2,Fheight,Fwidth);
 
             Runes[0]= runesheet.crop(Rwidth*0,Rheight*0,Rwidth,Rheight);//Runes
             Runes[1]= runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight);

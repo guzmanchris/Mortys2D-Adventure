@@ -10,9 +10,11 @@ import Resources.GameCamera;
 import Resources.Images;
 import Display.DisplayScreen;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -47,11 +49,13 @@ public class Game implements Runnable {
     private Handler handler;
 
     //music
-    File audioFile;
-    AudioInputStream audioStream;
-    AudioFormat format;
-    DataLine.Info info;
-    Clip audioClip;
+    private File audioFile;
+    private AudioInputStream audioStream;
+    private AudioFormat format;
+    private DataLine.Info info;
+    private Clip audioClip;
+
+    private BufferedImage loading;
 
     public Game(String title, int width, int height){
 
@@ -60,6 +64,12 @@ public class Game implements Runnable {
         this.title = title;
         keyManager = new KeyManager();
         mouseManager = new MouseManager();
+
+        try {
+            loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -163,8 +173,10 @@ public class Game implements Runnable {
         g = bs.getDrawGraphics();
         //Clear Screen
         g.clearRect(0, 0, width, height);
+
         //Draw Here!
 
+        g.drawImage(loading ,0,0,width,height,null);
         if(State.getState() != null)
             State.getState().render(g);
 

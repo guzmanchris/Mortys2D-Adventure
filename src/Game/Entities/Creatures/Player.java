@@ -3,10 +3,12 @@ package Game.Entities.Creatures;
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
+import Game.Tiles.Tile;
 import Resources.Animation;
 import Resources.Images;
 import Main.Handler;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 /**
@@ -16,7 +18,7 @@ import java.awt.image.BufferedImage;
 public class Player extends CreatureBase {
 
     //Animations
-    private Animation animDown, animUp, animLeft, animRight;
+    private Animation animDown, animUp, animLeft, animRight,animFireATT,animFireATTR,animFireATTU,animFireATTD;
     private boolean ld=true,ll=false,lr=false,lu=false;
     // Attack timer
     private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
@@ -26,8 +28,20 @@ public class Player extends CreatureBase {
 
     int fcounter = 0;
     Boolean fcactive=true;
+    Boolean FireBall=false;
+    Boolean LaunchedFireBall=false;
+    Boolean LaunchedFireBallL=false;
+    Boolean LaunchedFireBallR=false;
+    Boolean LaunchedFireBallU=false;
+    Boolean LaunchedFireBallD=false;
+    Boolean attacking=false;
 
     private int animWalkingSpeed = 150;
+    private int animFireSpeed = 150;
+    private int FireSpeed = 1;
+    private int FireMove = 0;
+    private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,fy,fx;
+
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
@@ -42,6 +56,10 @@ public class Player extends CreatureBase {
         animLeft = new Animation(animWalkingSpeed,Images.player_left);
         animRight = new Animation(animWalkingSpeed,Images.player_right);
         animUp = new Animation(animWalkingSpeed,Images.player_back);
+        animFireATT = new Animation(animFireSpeed,Images.FireBallLeft);
+        animFireATTR = new Animation(animFireSpeed,Images.FireBallRight);
+        animFireATTU = new Animation(animFireSpeed,Images.FireBallUp);
+        animFireATTD = new Animation(animFireSpeed,Images.FireBallDown);
 
         inventory= new Inventory(handler);
 
@@ -54,6 +72,12 @@ public class Player extends CreatureBase {
         animUp.tick();
         animRight.tick();
         animLeft.tick();
+        animFireATT.tick();
+        animFireATTR.tick();
+        animFireATTU.tick();
+        animFireATTD.tick();
+
+
         //Movement
         getInput();
         move();
@@ -65,14 +89,39 @@ public class Player extends CreatureBase {
         if(fcounter>=60){
             fcounter=0;
             fcactive=true;
+            FireBall=true;
+
         }
 
+        if(FireBall){
+            FireMove++;
+        }
 
         // Attack
         if(handler.getKeyManager().attbut) {
             checkAttacks();
         }else if(handler.getKeyManager().fattbut){
+
             fireAttack();
+
+
+        }
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)){
+            LaunchedFireBall=true;
+            movexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
+            moveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
+            movexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
+            moveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
+            tempmovexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
+            tempmoveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
+            tempmovexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
+            tempmoveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
+            LaunchedFireBallL=false;
+            LaunchedFireBallR=false;
+            LaunchedFireBallU=false;
+            LaunchedFireBallD=false;
+            fy=(int) (y - handler.getGameCamera().getyOffset()) + (height / 2);
+            fx=(int) (x - handler.getGameCamera().getxOffset()) + 16;
         }
 
         //Inventory
@@ -80,15 +129,17 @@ public class Player extends CreatureBase {
     }
 
     private void fireAttack() {
-            for (Item i : getInventory().getInventoryItems()) {
-                if (i.getName() == "Fire Rune"&&fcactive) {
-                    System.out.println("Burn");
-                    i.setCount(i.getCount() - 1);
-                    fcactive=false;
-                }
+
+        for (Item i : getInventory().getInventoryItems()) {
+            if (i.getName() == "Fire Rune"&&fcactive) {
+                attacking=true;
+                System.out.println("Burn");
+                i.setCount(i.getCount() - 1);
+                fcactive=false;
+                return;
+
             }
-
-
+        }
     }
 
     private void checkAttacks(){
@@ -142,19 +193,115 @@ public class Player extends CreatureBase {
         xMove = 0;
         yMove = 0;
 
-        if(handler.getKeyManager().up)
+        if(handler.getKeyManager().up &&! attacking)
             yMove = -speed;
-        if(handler.getKeyManager().down)
+        if(handler.getKeyManager().down&&! attacking)
             yMove = speed;
-        if(handler.getKeyManager().left)
+        if(handler.getKeyManager().left&&! attacking)
             xMove = -speed;
-        if(handler.getKeyManager().right)
+        if(handler.getKeyManager().right&&! attacking)
             xMove = speed;
     }
 
     @Override
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+
+        if(FireBall){
+            FireBallAttack(g);
+
+        }
+
+
+    }
+
+    private void FireBallAttack(Graphics g) {
+
+
+        if (lr&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
+            LaunchedFireBall=false;
+            LaunchedFireBallL=false;
+            LaunchedFireBallR=true;
+            LaunchedFireBallU=false;
+            LaunchedFireBallD=false;
+
+        } else if (ld&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
+            LaunchedFireBall=false;
+            LaunchedFireBallL=false;
+            LaunchedFireBallR=false;
+            LaunchedFireBallU=false;
+            LaunchedFireBallD=true;
+
+        } else if (lu&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
+            LaunchedFireBall=false;
+            LaunchedFireBallL=false;
+            LaunchedFireBallR=false;
+            LaunchedFireBallU=true;
+            LaunchedFireBallD=false;
+
+        } else if(ll&&LaunchedFireBall&&!LaunchedFireBallL&&!LaunchedFireBallR&&!LaunchedFireBallD&&!LaunchedFireBallU) {
+            LaunchedFireBall=false;
+            LaunchedFireBallL=true;
+            LaunchedFireBallR=false;
+            LaunchedFireBallU=false;
+            LaunchedFireBallD=false;
+
+        }
+        if (LaunchedFireBallR) {
+            movexp+=FireSpeed;
+            g.drawImage(getCurrentFireAnimationFrame(), movexp, fy, 64, 32, null);
+            if(movexp >= tempmovexp + 64*2){
+                FireBall=false;
+                attacking=false;
+            }
+        } else if (LaunchedFireBallD) {
+            moveyp+=FireSpeed;
+            g.drawImage(getCurrentFireAnimationFrame(), fx-6, moveyp, 32, 64, null);
+            if(moveyp >= tempmoveyp + 64*2){
+                FireBall=false;
+                attacking=false;
+            }
+        } else if (LaunchedFireBallU) {
+            moveyn-=FireSpeed;
+            g.drawImage(getCurrentFireAnimationFrame(), fx, moveyn, 32, 64, null);
+            if(moveyn <= tempmoveyn - 64*2){
+                FireBall=false;
+                attacking=false;
+            }
+        } else if(LaunchedFireBallL) {   //ll
+            movexn-=FireSpeed;
+            g.drawImage(getCurrentFireAnimationFrame(), movexn, fy, 64, 32, null);
+            if(movexn <= tempmovexn - 64*2){
+                FireBall=false;
+                attacking=false;
+            }
+        }
+
+
+
+
+
+    }
+
+    private BufferedImage getCurrentFireAnimationFrame(){
+
+        if(LaunchedFireBallR){
+
+            return animFireATTR.getCurrentFrame();
+
+        }else if(LaunchedFireBallD){
+
+            return animFireATTD.getCurrentFrame();
+
+        }else if(LaunchedFireBallU){
+
+            return animFireATTU.getCurrentFrame();
+
+        }else{   //ll
+
+            return animFireATT.getCurrentFrame();
+        }
+
 
     }
 

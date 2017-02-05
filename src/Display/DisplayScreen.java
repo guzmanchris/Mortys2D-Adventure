@@ -2,8 +2,7 @@ package Display;
 
 import Resources.Images;
 
-import java.awt.Canvas;
-import java.awt.Dimension;
+import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
 
@@ -34,6 +33,7 @@ public class DisplayScreen {
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		frame.setBackground(Color.black);
 
 		iconURL = getClass().getResource("/Sheets/icon.png");
 		ImageIcon icon = new ImageIcon(iconURL);
@@ -44,6 +44,7 @@ public class DisplayScreen {
 		canvas.setMaximumSize(new Dimension(width, height));
 		canvas.setMinimumSize(new Dimension(width, height));
 		canvas.setFocusable(false);
+		canvas.setBackground(Color.black);
 		
 		frame.add(canvas);
 		frame.pack();
