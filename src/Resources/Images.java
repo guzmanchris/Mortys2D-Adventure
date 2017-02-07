@@ -20,6 +20,10 @@ public class Images {
     public static BufferedImage[] player_left;
     public static BufferedImage[] player_front;
     public static BufferedImage[] player_back;
+    public static BufferedImage[] SkelyEnemy_right;
+    public static BufferedImage[] SkelyEnemy_left;
+    public static BufferedImage[] SkelyEnemy_front;
+    public static BufferedImage[] SkelyEnemy_back;
     public static BufferedImage[] butstart;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
@@ -55,10 +59,17 @@ public class Images {
 
 
         blocks = new BufferedImage[15];
+
         player_left = new BufferedImage[4];
         player_right = new BufferedImage[4];
         player_front = new BufferedImage[4];
         player_back = new BufferedImage[4];
+
+        SkelyEnemy_left = new BufferedImage[4];
+        SkelyEnemy_right = new BufferedImage[4];
+        SkelyEnemy_front = new BufferedImage[4];
+        SkelyEnemy_back = new BufferedImage[4];
+
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
         items = new BufferedImage[3];
@@ -67,6 +78,7 @@ public class Images {
         BTitle = new BufferedImage[2];
         Options = new BufferedImage[2];
         Runes = new BufferedImage[36];
+
         FireBallLeft = new BufferedImage[6];
         FireBallRight = new BufferedImage[6];
         FireBallUp = new BufferedImage[6];
@@ -206,6 +218,27 @@ public class Images {
             player_back[1]=newsheet.crop(164,227,width,height);
             player_back[2]=newsheet.crop(196,227,width,height);
             player_back[3]=newsheet.crop(228,227,28,height);
+
+            //Skely enemy anim
+            SkelyEnemy_front[0]=newsheet.crop(132,131+130,width,height);
+            SkelyEnemy_front[1]=newsheet.crop(164,131+130,width,height);
+            SkelyEnemy_front[2]=newsheet.crop(196,131+130,width,height);
+            SkelyEnemy_front[3]=newsheet.crop(228,131+130,28,height);
+
+            SkelyEnemy_left[0]=newsheet.crop(132,163+130,width,height);
+            SkelyEnemy_left[1]=newsheet.crop(164,163+130,width,height);
+            SkelyEnemy_left[2]=newsheet.crop(196,163+130,width,height);
+            SkelyEnemy_left[3]=newsheet.crop(228,163+130,28,height);
+
+            SkelyEnemy_right[0]=newsheet.crop(132,195+130,width,height);
+            SkelyEnemy_right[1]=newsheet.crop(164,195+130,width,height);
+            SkelyEnemy_right[2]=newsheet.crop(196,195+130,width,height);
+            SkelyEnemy_right[3]=newsheet.crop(228,195+130,28,height);
+
+            SkelyEnemy_back[0]=newsheet.crop(132,227+130,width,height);
+            SkelyEnemy_back[1]=newsheet.crop(164,227+130,width,height);
+            SkelyEnemy_back[2]=newsheet.crop(196,227+130,width,height);
+            SkelyEnemy_back[3]=newsheet.crop(228,227+130,28,height);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,6 +1,7 @@
 package Game.Entities.Creatures;
 
 import Game.Entities.EntityBase;
+import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
 import Game.Tiles.Tile;
@@ -19,9 +20,9 @@ public class Player extends CreatureBase {
 
     //Animations
     private Animation animDown, animUp, animLeft, animRight,animFireATT,animFireATTR,animFireATTU,animFireATTD;
-    private boolean ld=true,ll=false,lr=false,lu=false;
+
     // Attack timer
-    private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
+
 
     //Inventory
     private Inventory inventory;
@@ -37,8 +38,8 @@ public class Player extends CreatureBase {
     Boolean attacking=false;
 
     private int animWalkingSpeed = 150;
-    private int animFireSpeed = 150;
-    private int FireSpeed = 1;
+    private int animFireSpeed = 250;
+    private int FireSpeed = 2;
     private int FireMove = 0;
     private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,fy,fx;
 
@@ -50,6 +51,7 @@ public class Player extends CreatureBase {
         bounds.y=18*2;
         bounds.width=16*2;
         bounds.height=14*2;
+        health=20;
 
 
         animDown = new Animation(animWalkingSpeed,Images.player_front);
@@ -142,7 +144,8 @@ public class Player extends CreatureBase {
         }
     }
 
-    private void checkAttacks(){
+    @Override
+    public void checkAttacks(){
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
         lastAttackTimer = System.currentTimeMillis();
         if(attackTimer < attackCooldown)
@@ -187,6 +190,7 @@ public class Player extends CreatureBase {
     @Override
     public void die(){
         System.out.println("You lose");
+        State.setState(handler.getGame().menuState);
     }
 
     private void getInput(){
@@ -305,6 +309,7 @@ public class Player extends CreatureBase {
 
     }
 
+    @SuppressWarnings("Duplicates")
     private BufferedImage getCurrentAnimationFrame(){
         if(xMove < 0){
             ll=true;

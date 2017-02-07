@@ -4,6 +4,8 @@ import Game.Entities.EntityBase;
 import Game.Tiles.Tile;
 import Main.Handler;
 
+import java.awt.*;
+
 /**
  * Created by Elemental on 1/1/2017.
  */
@@ -17,6 +19,10 @@ public abstract class CreatureBase extends EntityBase {
 
     protected float speed;
     protected float xMove, yMove;
+
+    protected long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
+
+    protected boolean ld=true,ll=false,lr=false,lu=false;
 
     public CreatureBase(Handler handler, float x, float y, int height, int width) {
         super(handler,x, y,height,width);
@@ -78,6 +84,48 @@ public abstract class CreatureBase extends EntityBase {
             }
 
         }
+    }
+
+    public void checkAttacks(){
+        attackTimer += System.currentTimeMillis() - lastAttackTimer;
+        lastAttackTimer = System.currentTimeMillis();
+        if(attackTimer < attackCooldown)
+            return;
+
+        Rectangle cb = getCollisionBounds(0, 0);
+        Rectangle ar = new Rectangle();
+        int arSize = 20;
+        ar.width = arSize;
+        ar.height = arSize;
+
+        if(lu){
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y - arSize;
+        }else if(ld){
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y + cb.height;
+        }else if(ll){
+            ar.x = cb.x - arSize;
+            ar.y = cb.y + cb.height / 2 - arSize / 2;
+        }else if(lr){
+            ar.x = cb.x + cb.width;
+            ar.y = cb.y + cb.height / 2 - arSize / 2;
+        }else{
+            return;
+        }
+
+        attackTimer = 0;
+
+        for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
+            if(e.equals(this))
+                continue;
+            if(e.getCollisionBounds(0, 0).intersects(ar)){
+                e.hurt(1);
+                System.out.println(e + " has " + e.getHealth() + " lives.");
+                return;
+            }
+        }
+
     }
 
     protected boolean collisionWithTile(int x, int y){
