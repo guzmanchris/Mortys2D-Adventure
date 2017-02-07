@@ -22,6 +22,8 @@ public class SkelyEnemy extends CreatureBase  {
     private Inventory Skelyinventory;
     private Rectangle SkelyCam;
 
+    private int healthcounter =0;
+
     public SkelyEnemy(Handler handler, float x, float y) {
         super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
         bounds.x=8*2;
@@ -52,6 +54,16 @@ public class SkelyEnemy extends CreatureBase  {
         checkIfMove();
         move();
 
+        if(isBeinghurt()){
+            healthcounter++;
+            if(healthcounter>=120){
+                setBeinghurt(false);
+                System.out.print(isBeinghurt());
+            }
+        }
+        if(healthcounter>=120&& !isBeinghurt()){
+            healthcounter=0;
+        }
 
 
         Skelyinventory.tick();
@@ -118,7 +130,7 @@ public class SkelyEnemy extends CreatureBase  {
                 xMove = -speed;
             }
 
-            if(y==handler.getWorld().getEntityManager().getPlayer().getY()){//nada
+            if(y>=handler.getWorld().getEntityManager().getPlayer().getY()-8 && y<=handler.getWorld().getEntityManager().getPlayer().getY()+8){//nada
                 yMove =0;
             }else if(y<handler.getWorld().getEntityManager().getPlayer().getY()){//move down
                 yMove = speed;
@@ -138,7 +150,10 @@ public class SkelyEnemy extends CreatureBase  {
     @Override
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-
+        if(isBeinghurt() && healthcounter<=120){
+            g.setColor(Color.white);
+            g.drawString("SkelyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
+        }
     }
 
     @SuppressWarnings("Duplicates")

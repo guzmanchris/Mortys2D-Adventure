@@ -215,6 +215,8 @@ public class Player extends CreatureBase {
             FireBallAttack(g);
 
         }
+        g.setColor(Color.white);
+        g.drawString("Health: " + getHealth(),(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20));
 
 
     }
