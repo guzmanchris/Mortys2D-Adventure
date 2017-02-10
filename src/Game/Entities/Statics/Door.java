@@ -4,6 +4,7 @@ import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
+import Worlds.BaseWorld;
 
 import java.awt.*;
 
@@ -17,8 +18,11 @@ public class Door extends StaticEntity {
     Rectangle ir = new Rectangle();
     public Boolean EP = false;
 
-    public Door(Handler handler, float x, float y) {
+    private BaseWorld world;
+
+    public Door(Handler handler, float x, float y,BaseWorld world) {
         super(handler, x, y, 64, 100);
+        this.world=world;
         health=10000000;
         bounds.x=0;
         bounds.y=0;
@@ -64,8 +68,8 @@ public class Door extends StaticEntity {
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
         }else if(ir.contains(pr) && EP){
             g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
-            State.setState(handler.getGame().menuState);
-
+            g.drawImage(Images.loading,0,0,800,600,null);
+            handler.setWorld(world);
 
         }
 

@@ -4,6 +4,7 @@ import Game.GameStates.State;
 import Inputs.KeyManager;
 import Resources.GameCamera;
 import Inputs.MouseManager;
+import Worlds.BaseWorld;
 import Worlds.World;
 
 /**
@@ -12,7 +13,7 @@ import Worlds.World;
 public class Handler {
 
     private Game game;
-    private World world;
+    private BaseWorld world;
 
     public Handler(Game game){
         this.game = game;
@@ -46,11 +47,11 @@ public class Handler {
         this.game = game;
     }
 
-    public World getWorld() {
+    public BaseWorld getWorld() {
         return world;
     }
 
-    public void setWorld(World world) {
+    public void setWorld(BaseWorld world) {
         this.world = world;
     }
 

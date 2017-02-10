@@ -1,6 +1,7 @@
 package Game.GameStates;
 
 import Main.Handler;
+import Worlds.BaseWorld;
 import Worlds.World;
 
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.*;
  */
 public class GameState extends State {
 
-    private World world;
+    private BaseWorld world;
 
     public GameState(Handler handler){
         super(handler);
@@ -21,12 +22,14 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-        world.tick();
+        handler.getWorld().tick();
+
     }
 
     @Override
     public void render(Graphics g) {
-        world.render(g);
+        handler.getWorld().render(g);
+
     }
 
 }

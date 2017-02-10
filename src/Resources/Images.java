@@ -43,6 +43,7 @@ public class Images {
     public static BufferedImage[] FireBallRight;
     public static BufferedImage[] FireBallUp;
     public static BufferedImage[] FireBallDown;
+    public static BufferedImage loading;
 
 
 
@@ -88,6 +89,8 @@ public class Images {
 
 
         try {
+
+            loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
