@@ -3,8 +3,11 @@ package Game.Entities.Creatures;
 import Game.Entities.EntityBase;
 import Game.Tiles.Tile;
 import Main.Handler;
+import Resources.Animation;
+import Resources.Images;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -16,6 +19,7 @@ public abstract class CreatureBase extends EntityBase {
     public static final float DEFAULT_SPEED = 3.0f;
     public static final int DEFAULT_CREATURE_WIDTH = 64,
             DEFAULT_CREATURE_HEIGHT = 64;
+
 
     protected float speed;
     protected float xMove, yMove;
@@ -30,6 +34,46 @@ public abstract class CreatureBase extends EntityBase {
         speed = DEFAULT_SPEED;
         xMove=0;
         yMove=0;
+    }
+
+    public BufferedImage getCurrentAnimationFrame( Animation animDown, Animation animUp, Animation animLeft, Animation animRight, BufferedImage[] front,BufferedImage[] back,BufferedImage[] left,BufferedImage[] right) {
+        if(xMove < 0){
+            ll=true;
+            ld=false;
+            lr=false;
+            lu=false;
+            return animLeft.getCurrentFrame();
+        }else if(xMove > 0){
+            ll=false;
+            ld=false;
+            lr=true;
+            lu=false;
+            return animRight.getCurrentFrame();
+        }else if(yMove < 0){
+            ll=false;
+            ld=false;
+            lr=false;
+            lu=true;
+            return animUp.getCurrentFrame();
+        }else if(yMove > 0){
+            ll=false;
+            ld=true;
+            lr=false;
+            lu=false;
+            return animDown.getCurrentFrame();
+        }else{
+            if(ld){
+                return front[0];
+            }else if(lu){
+                return back[0];
+            }else if(ll){
+                return left[0];
+            }else if(lr){
+                return right[0];
+            }else{
+                return front[0];
+            }
+        }
     }
 
     public void move(){

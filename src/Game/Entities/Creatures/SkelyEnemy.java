@@ -15,7 +15,7 @@ import java.util.Random;
 public class SkelyEnemy extends CreatureBase  {
 
 
-    private Animation animsDown, animsUp, animsLeft, animsRight;
+    private Animation animDown, animUp, animLeft, animRight;
 
     Boolean attacking=false;
 
@@ -44,20 +44,20 @@ public class SkelyEnemy extends CreatureBase  {
         randint = new Random();
         direction = randint.nextInt(4) + 1;
 
-        animsDown = new Animation(animWalkingSpeed, Images.SkelyEnemy_front);
-        animsLeft = new Animation(animWalkingSpeed,Images.SkelyEnemy_left);
-        animsRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
-        animsUp = new Animation(animWalkingSpeed,Images.SkelyEnemy_back);
+        animDown = new Animation(animWalkingSpeed, Images.SkelyEnemy_front);
+        animLeft = new Animation(animWalkingSpeed,Images.SkelyEnemy_left);
+        animRight = new Animation(animWalkingSpeed,Images.SkelyEnemy_right);
+        animUp = new Animation(animWalkingSpeed,Images.SkelyEnemy_back);
 
         Skelyinventory= new Inventory(handler);
     }
 
     @Override
     public void tick() {
-        animsDown.tick();
-        animsUp.tick();
-        animsRight.tick();
-        animsLeft.tick();
+        animDown.tick();
+        animUp.tick();
+        animRight.tick();
+        animLeft.tick();
 
         moveCount ++;
         if(moveCount>=60){
@@ -176,53 +176,15 @@ public class SkelyEnemy extends CreatureBase  {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.SkelyEnemy_front,Images.SkelyEnemy_back,Images.SkelyEnemy_left,Images.SkelyEnemy_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         if(isBeinghurt() && healthcounter<=120){
             g.setColor(Color.white);
             g.drawString("SkelyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
         }
     }
 
-    @SuppressWarnings("Duplicates")
-    private Image getCurrentAnimationFrame() {
-        if(xMove < 0){
-            ll=true;
-            ld=false;
-            lr=false;
-            lu=false;
-            return animsLeft.getCurrentFrame();
-        }else if(xMove > 0){
-            ll=false;
-            ld=false;
-            lr=true;
-            lu=false;
-            return animsRight.getCurrentFrame();
-        }else if(yMove < 0){
-            ll=false;
-            ld=false;
-            lr=false;
-            lu=true;
-            return animsUp.getCurrentFrame();
-        }else if(yMove > 0){
-            ll=false;
-            ld=true;
-            lr=false;
-            lu=false;
-            return animsDown.getCurrentFrame();
-        }else{
-            if(ld){
-                return Images.SkelyEnemy_front[0];
-            }else if(lu){
-                return Images.SkelyEnemy_back[0];
-            }else if(ll){
-                return Images.SkelyEnemy_left[0];
-            }else if(lr){
-                return Images.SkelyEnemy_right[0];
-            }else{
-                return Images.SkelyEnemy_front[0];
-            }
-        }
-    }
+
+
 
     @Override
     public void die() {

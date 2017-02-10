@@ -209,7 +209,7 @@ public class Player extends CreatureBase {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.player_front,Images.player_back,Images.player_left,Images.player_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 
         if(FireBall){
             FireBallAttack(g);
@@ -311,46 +311,6 @@ public class Player extends CreatureBase {
 
     }
 
-    @SuppressWarnings("Duplicates")
-    private BufferedImage getCurrentAnimationFrame(){
-        if(xMove < 0){
-            ll=true;
-            ld=false;
-            lr=false;
-            lu=false;
-            return animLeft.getCurrentFrame();
-        }else if(xMove > 0){
-            ll=false;
-            ld=false;
-            lr=true;
-            lu=false;
-            return animRight.getCurrentFrame();
-        }else if(yMove < 0){
-            ll=false;
-            ld=false;
-            lr=false;
-            lu=true;
-            return animUp.getCurrentFrame();
-        }else if(yMove > 0){
-            ll=false;
-            ld=true;
-            lr=false;
-            lu=false;
-            return animDown.getCurrentFrame();
-        }else{
-            if(ld){
-                return Images.player_front[0];
-            }else if(lu){
-                return Images.player_back[0];
-            }else if(ll){
-                return Images.player_left[0];
-            }else if(lr){
-                return Images.player_right[0];
-            }else{
-                return Images.player_front[0];
-            }
-        }
-    }
 
     public Inventory getInventory() {
         return inventory;
