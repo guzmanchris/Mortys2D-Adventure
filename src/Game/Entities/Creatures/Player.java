@@ -4,6 +4,7 @@ import Game.Entities.EntityBase;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
+import Game.SpellCastUI.SpellCast;
 import Game.Tiles.Tile;
 import Resources.Animation;
 import Resources.Images;
@@ -26,6 +27,8 @@ public class Player extends CreatureBase {
 
     //Inventory
     private Inventory inventory;
+
+    private SpellCast spellGUI;
 
     int fcounter = 0;
     Boolean fcactive=true;
@@ -64,7 +67,7 @@ public class Player extends CreatureBase {
         animFireATTD = new Animation(animFireSpeed,Images.FireBallDown);
 
         inventory= new Inventory(handler);
-
+        spellGUI= new SpellCast(handler);
     }
 
     @Override
@@ -78,6 +81,7 @@ public class Player extends CreatureBase {
         animFireATTR.tick();
         animFireATTU.tick();
         animFireATTD.tick();
+
 
 
         //Movement
@@ -128,6 +132,25 @@ public class Player extends CreatureBase {
 
         //Inventory
         inventory.tick();
+
+        //spellgui
+        spellGUI.tick();
+    }
+
+    @Override
+    public void render(Graphics g) {
+        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.player_front,Images.player_back,Images.player_left,Images.player_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+
+        if(FireBall){
+            FireBallAttack(g);
+
+        }
+
+        g.setColor(Color.white);
+        g.drawString("Health: " + getHealth(),(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20));
+
+
+
     }
 
     private void fireAttack() {
@@ -207,19 +230,6 @@ public class Player extends CreatureBase {
             xMove = speed;
     }
 
-    @Override
-    public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.player_front,Images.player_back,Images.player_left,Images.player_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-
-        if(FireBall){
-            FireBallAttack(g);
-
-        }
-        g.setColor(Color.white);
-        g.drawString("Health: " + getHealth(),(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20));
-
-
-    }
 
     private void FireBallAttack(Graphics g) {
 
@@ -311,7 +321,6 @@ public class Player extends CreatureBase {
 
     }
 
-
     public Inventory getInventory() {
         return inventory;
     }
@@ -320,5 +329,7 @@ public class Player extends CreatureBase {
         this.inventory = inventory;
     }
 
-
+    public SpellCast getSpellGUI() {
+        return spellGUI;
+    }
 }
