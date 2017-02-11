@@ -56,7 +56,7 @@ public class Player extends CreatureBase {
         bounds.y=18*2;
         bounds.width=16*2;
         bounds.height=14*2;
-        health=20;
+        health=75;
 
 
         animDown = new Animation(animWalkingSpeed,Images.player_front);
@@ -136,8 +136,26 @@ public class Player extends CreatureBase {
 
         }
 
+
+
+
+        g.setColor(Color.BLACK);
+        g.drawRect((int)(x-handler.getGameCamera().getxOffset()-1),(int)(y-handler.getGameCamera().getyOffset()-21),76,11);
+        if(this.getHealth()>50){
+            g.setColor(Color.GREEN);
+            g.fillRect((int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20),getHealth(),10);
+
+        }else if(this.getHealth()>=15 && getHealth()<=50){
+            g.setColor(Color.YELLOW);
+            g.fillRect((int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20),getHealth(),10);
+
+        }else if(this.getHealth() < 15){
+            g.setColor(Color.RED);
+            g.fillRect((int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20),getHealth(),10);
+
+        }
         g.setColor(Color.white);
-        g.drawString("Health: " + getHealth(),(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-20));
+        g.drawString("Health: " + getHealth(),(int)(x-handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()-10));
 
 
 
@@ -209,7 +227,7 @@ public class Player extends CreatureBase {
             if(e.equals(this))
                 continue;
             if(e.getCollisionBounds(0, 0).intersects(ar)){
-                e.hurt(2);
+                e.hurt(8);
                 System.out.println(e + " has " + e.getHealth() + " lives.");
                 return;
             }
