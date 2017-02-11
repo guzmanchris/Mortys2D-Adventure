@@ -27,10 +27,12 @@ public class BaseWorld {
     protected ItemManager itemManager;
 
 
-    public BaseWorld(Handler handler, String path) {
+
+
+    public BaseWorld(Handler handler, String path, Player player) {
 
         this.handler=handler;
-        entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+        entityManager = new EntityManager(handler,player);
         itemManager=new ItemManager(handler);
 
         loadWorld(path);

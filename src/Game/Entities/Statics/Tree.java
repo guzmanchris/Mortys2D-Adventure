@@ -26,6 +26,7 @@ public class Tree extends StaticEntity {
         bounds.y=85;
         bounds.width = 36;
         bounds.height = 48;
+        health=16;
 
         try {
             audioFile = new File("res/music/Chopping.wav");

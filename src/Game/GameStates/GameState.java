@@ -1,5 +1,6 @@
 package Game.GameStates;
 
+import Game.Entities.Creatures.Player;
 import Main.Handler;
 import Worlds.BaseWorld;
 import Worlds.World;
@@ -11,12 +12,12 @@ import java.awt.*;
  */
 public class GameState extends State {
 
-    private BaseWorld world;
-
     public GameState(Handler handler){
         super(handler);
-        world = new World(handler, "res/Maps/map1.map");
+        Player player = new Player(handler, 100, 100);
+        BaseWorld world = new World(handler, "res/Maps/map1.map", player);
         handler.setWorld(world);
+        handler.getWorld().getEntityManager().setPlayer(player);
     }
 
 

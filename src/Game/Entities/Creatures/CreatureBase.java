@@ -20,6 +20,7 @@ public abstract class CreatureBase extends EntityBase {
     public static final int DEFAULT_CREATURE_WIDTH = 64,
             DEFAULT_CREATURE_HEIGHT = 64;
 
+    protected int attack=6;
 
     protected float speed;
     protected float xMove, yMove;
@@ -165,7 +166,7 @@ public abstract class CreatureBase extends EntityBase {
             if(e.equals(this))
                 continue;
             if(e.getCollisionBounds(0, 0).intersects(ar)){
-                e.hurt(6);
+                e.hurt(attack);
                 System.out.println(e + " has " + e.getHealth() + " lives.");
                 return;
             }

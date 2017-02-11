@@ -21,7 +21,7 @@ public class Player extends CreatureBase {
     //Animations
     private Animation animDown, animUp, animLeft, animRight,animFireATT,animFireATTR,animFireATTU,animFireATTD;
 
-    // Attack timer
+    // Attack
 
 
     //Inventory
@@ -57,6 +57,7 @@ public class Player extends CreatureBase {
         bounds.width=16*2;
         bounds.height=14*2;
         health=75;
+        attack=8;
 
 
         animDown = new Animation(animWalkingSpeed,Images.player_front);
@@ -227,7 +228,7 @@ public class Player extends CreatureBase {
             if(e.equals(this))
                 continue;
             if(e.getCollisionBounds(0, 0).intersects(ar)){
-                e.hurt(8);
+                e.hurt(attack);
                 System.out.println(e + " has " + e.getHealth() + " lives.");
                 return;
             }

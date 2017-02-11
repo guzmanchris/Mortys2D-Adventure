@@ -1,5 +1,6 @@
 package Worlds;
 
+import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.Door;
 import Game.Entities.Statics.Rock;
@@ -14,11 +15,10 @@ public class World extends BaseWorld{
     private Handler handler;
     private BaseWorld caveWorld;
 
-    public World(Handler handler, String path){
-        super(handler,path);
+    public World(Handler handler, String path, Player player){
+        super(handler,path,player);
         this.handler = handler;
-
-        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map");
+        caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 
         entityManager.addEntity(new Tree(handler, 100, 250));
         entityManager.addEntity(new Rock(handler, 100, 450));

@@ -31,6 +31,7 @@ public class Rock extends StaticEntity {
         bounds.y=0;
         bounds.width = 64;
         bounds.height = 64;
+        health=16;
 
         try {
             audioFile = new File("res/music/Pickaxe.wav");
