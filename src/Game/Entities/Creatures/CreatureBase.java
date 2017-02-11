@@ -8,6 +8,7 @@ import Resources.Images;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.DuplicateFormatFlagsException;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -132,6 +133,7 @@ public abstract class CreatureBase extends EntityBase {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     public void checkAttacks(){
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
         lastAttackTimer = System.currentTimeMillis();

@@ -193,6 +193,7 @@ public class Player extends CreatureBase {
         }
     }
 
+    @SuppressWarnings("Duplicates")
     @Override
     public void checkAttacks(){
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
