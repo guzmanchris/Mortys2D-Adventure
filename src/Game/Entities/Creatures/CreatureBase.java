@@ -165,7 +165,7 @@ public abstract class CreatureBase extends EntityBase {
             if(e.equals(this))
                 continue;
             if(e.getCollisionBounds(0, 0).intersects(ar)){
-                e.hurt(9);
+                e.hurt(6);
                 System.out.println(e + " has " + e.getHealth() + " lives.");
                 return;
             }
