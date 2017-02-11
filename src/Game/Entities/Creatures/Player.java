@@ -4,8 +4,7 @@ import Game.Entities.EntityBase;
 import Game.GameStates.State;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
-import Game.SpellCastUI.SpellCast;
-import Game.Tiles.Tile;
+import Game.SpellCast.SpellCastUI;
 import Resources.Animation;
 import Resources.Images;
 import Main.Handler;
@@ -28,7 +27,7 @@ public class Player extends CreatureBase {
     //Inventory
     private Inventory inventory;
 
-    private SpellCast spellGUI;
+    private SpellCastUI spellGUI;
 
     int fcounter = 0;
     Boolean fcactive=true;
@@ -45,6 +44,9 @@ public class Player extends CreatureBase {
     private int FireSpeed = 2;
     private int FireMove = 0;
     private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,fy,fx;
+
+    //spells
+
 
 
     public Player(Handler handler, float x, float y) {
@@ -67,7 +69,7 @@ public class Player extends CreatureBase {
         animFireATTD = new Animation(animFireSpeed,Images.FireBallDown);
 
         inventory= new Inventory(handler);
-        spellGUI= new SpellCast(handler);
+        spellGUI= new SpellCastUI(handler);
     }
 
     @Override
@@ -103,6 +105,10 @@ public class Player extends CreatureBase {
             FireMove++;
         }
 
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)){
+            readyFireAttack();
+        }
+
         // Attack
         if(handler.getKeyManager().attbut) {
             checkAttacks();
@@ -112,23 +118,7 @@ public class Player extends CreatureBase {
 
 
         }
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)){
-            LaunchedFireBall=true;
-            movexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
-            moveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
-            movexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
-            moveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
-            tempmovexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
-            tempmoveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
-            tempmovexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
-            tempmoveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
-            LaunchedFireBallL=false;
-            LaunchedFireBallR=false;
-            LaunchedFireBallU=false;
-            LaunchedFireBallD=false;
-            fy=(int) (y - handler.getGameCamera().getyOffset()) + (height / 2);
-            fx=(int) (x - handler.getGameCamera().getxOffset()) + 16;
-        }
+
 
         //Inventory
         inventory.tick();
@@ -153,7 +143,24 @@ public class Player extends CreatureBase {
 
     }
 
-    private void fireAttack() {
+    public void readyFireAttack(){
+        LaunchedFireBall=true;
+        movexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
+        moveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
+        movexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
+        moveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
+        tempmovexp =(int) (x - handler.getGameCamera().getxOffset()) + 48;
+        tempmoveyp =(int) (y - handler.getGameCamera().getyOffset()) + 64;
+        tempmovexn =(int) (x - handler.getGameCamera().getxOffset()) - 48;
+        tempmoveyn =(int) (y - handler.getGameCamera().getyOffset()) - 64;
+        LaunchedFireBallL=false;
+        LaunchedFireBallR=false;
+        LaunchedFireBallU=false;
+        LaunchedFireBallD=false;
+        fy=(int) (y - handler.getGameCamera().getyOffset()) + (height / 2);
+        fx=(int) (x - handler.getGameCamera().getxOffset()) + 16;
+    }
+    public void fireAttack() {
 
         for (Item i : getInventory().getInventoryItems()) {
             if (i.getName() == "Fire Rune"&&fcactive) {
@@ -329,7 +336,7 @@ public class Player extends CreatureBase {
         this.inventory = inventory;
     }
 
-    public SpellCast getSpellGUI() {
+    public SpellCastUI getSpellGUI() {
         return spellGUI;
     }
 }

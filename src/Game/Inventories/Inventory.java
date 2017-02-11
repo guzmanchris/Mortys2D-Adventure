@@ -1,6 +1,7 @@
 package Game.Inventories;
 
 import Game.Items.Item;
+import Game.SpellCast.FireBallSpell;
 import Resources.Images;
 import UI.UIInventory;
 import UI.UIManager;
@@ -23,8 +24,10 @@ public class Inventory {
     public Inventory(Handler handler){
 
         this.handler=handler;
-        inventoryItems = new ArrayList<Item>();
+        inventoryItems = new ArrayList<>();
+
         uiManager = new UIManager(handler);
+
         uiManager.addObjects(new UIInventory(0,0, 329, 265, Images.inventory,() -> {
         }));
     }
@@ -40,11 +43,19 @@ public class Inventory {
 
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_Q)){
             active=!active;
+            handler.getWorld().getEntityManager().getPlayer().getSpellGUI().setActive(false);
+
         }
 
         if(!active){
             return;
         }
+
+        handler.getMouseManager().setUimanager(uiManager);
+        uiManager.tick();
+
+
+
     }
 
     public void render(Graphics g) {
@@ -94,6 +105,9 @@ public class Inventory {
                 return;
             }
         }
+        if(item.getId()==2){
+            handler.getWorld().getEntityManager().getPlayer().getSpellGUI().addSpell(new FireBallSpell(handler));
+        }
         inventoryItems.add(item);
 
     }
@@ -109,5 +123,9 @@ public class Inventory {
 
     public ArrayList<Item> getInventoryItems(){
         return inventoryItems;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

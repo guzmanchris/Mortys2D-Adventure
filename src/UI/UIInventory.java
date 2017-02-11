@@ -25,7 +25,6 @@ public class UIInventory extends UIObject {
     @Override
     public void render(Graphics g) {
         if(active){
-
             g.drawImage(images,(int)x,(int)y,width,heith,null);
         }
 
@@ -35,5 +34,6 @@ public class UIInventory extends UIObject {
     @Override
     public void onClick()
     {
+        clicker.onClick();
     }
 }
