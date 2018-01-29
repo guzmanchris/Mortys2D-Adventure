@@ -21,6 +21,7 @@ import java.io.IOException;
 /**
  * Created by Elemental on 12/10/2016.
  */
+
 public class Game implements Runnable {
     private DisplayScreen display;
     private int width, height;
@@ -125,6 +126,7 @@ public class Game implements Runnable {
 
     public void run(){
 
+        //initiallizes everything in order to run without breaking
         init();
 
         int fps = 60;
@@ -136,12 +138,14 @@ public class Game implements Runnable {
         int ticks = 0;
 
         while(running){
+            //makes sure the games runs smoothly at 60 FPS
             now = System.nanoTime();
             delta += (now - lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
 
             if(delta >= 1){
+                //re-renders and ticks the game around 60 times per second
                 tick();
                 render();
                 ticks++;
@@ -159,8 +163,10 @@ public class Game implements Runnable {
     }
 
     private void tick(){
+        //checks for key types and manages them
         keyManager.tick();
 
+        //game states are the menus
         if(State.getState() != null)
             State.getState().tick();
     }
