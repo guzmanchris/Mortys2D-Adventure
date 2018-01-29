@@ -118,6 +118,7 @@ public class Game implements Runnable {
         if(running)
             return;
         running = true;
+        //this runs the run method in this  class
         thread = new Thread(this);
         thread.start();
     }
