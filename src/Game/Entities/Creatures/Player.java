@@ -106,6 +106,7 @@ public class Player extends CreatureBase {
             FireMove++;
         }
 
+
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)){
             readyFireAttack();
         }
