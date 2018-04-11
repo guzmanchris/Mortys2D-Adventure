@@ -7,7 +7,7 @@ import Resources.Images;
  * Created by Elemental on 2/11/2017.
  */
 public class FireBallSpell extends Spells {
-    Handler handler;
+    private Handler handler;
 
     public FireBallSpell(Handler handler) {
         super(handler,Images.Runes[2],2);

@@ -16,13 +16,13 @@ import java.util.Random;
  */
 public class Rock extends StaticEntity {
 
-    File audioFile;
-    AudioInputStream audioStream;
-    AudioFormat format;
-    DataLine.Info info;
-    Clip audioClip;
-    Random randint;
-    int RNGR;
+    private File audioFile;
+    private AudioInputStream audioStream;
+    private AudioFormat format;
+    private DataLine.Info info;
+    private Clip audioClip;
+    private Random randint;
+    private int RNGR;
 
     public Rock(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);

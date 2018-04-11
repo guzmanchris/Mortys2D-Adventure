@@ -15,7 +15,7 @@ import java.awt.*;
 
 public class Door extends StaticEntity {
 
-    Rectangle ir = new Rectangle();
+    private Rectangle ir = new Rectangle();
     public Boolean EP = false;
 
     private BaseWorld world;

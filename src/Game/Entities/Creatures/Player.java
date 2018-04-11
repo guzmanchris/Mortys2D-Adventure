@@ -29,15 +29,15 @@ public class Player extends CreatureBase {
 
     private SpellCastUI spellGUI;
 
-    int fcounter = 0;
-    Boolean fcactive=true;
-    Boolean FireBall=false;
-    Boolean LaunchedFireBall=false;
-    Boolean LaunchedFireBallL=false;
-    Boolean LaunchedFireBallR=false;
-    Boolean LaunchedFireBallU=false;
-    Boolean LaunchedFireBallD=false;
-    Boolean attacking=false;
+    private int fcounter = 0;
+    private Boolean fcactive=true;
+    private Boolean FireBall=false;
+    private Boolean LaunchedFireBall=false;
+    private Boolean LaunchedFireBallL=false;
+    private Boolean LaunchedFireBallR=false;
+    private Boolean LaunchedFireBallU=false;
+    private Boolean LaunchedFireBallD=false;
+    private Boolean attacking=false;
 
     private int animWalkingSpeed = 150;
     private int animFireSpeed = 250;
