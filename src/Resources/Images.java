@@ -31,6 +31,11 @@ public class Images {
     public static BufferedImage inventory;
     public static BufferedImage title;
     public static BufferedImage door;
+
+    public static BufferedImage bush;
+    public static BufferedImage[] chest;
+
+
     public static BufferedImage E;
     public static BufferedImage EP;
     public static BufferedImage Pause;
@@ -56,7 +61,9 @@ public class Images {
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
+        SpriteSheet chestsheet = new SpriteSheet(Images.loadImage("/Sheets/chest2.png"));
 
+        chest = new BufferedImage[2];
 
 
         blocks = new BufferedImage[15];
@@ -105,6 +112,13 @@ public class Images {
             BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
             Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
             Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+
+            bush = ImageIO.read(getClass().getResourceAsStream("/Sheets/bush.png"));
+
+            chest[0]= chestsheet.crop(0,0,32,32);
+            chest[1]= chestsheet.crop(33,0,31,32);
+
+
 
             //icon
             icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
