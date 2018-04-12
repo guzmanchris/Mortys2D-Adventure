@@ -19,10 +19,6 @@ public class World1 extends BaseWorld{
         caveWorld = new CaveWorld(handler,"res/Maps/caveMap.map",player);
 
         entityManager.addEntity(new Tree(handler, 100, 250));
-
-        entityManager.addEntity(new Bush(handler, 200, 200));
-
-
         entityManager.addEntity(new Rock(handler, 100, 450));
         entityManager.addEntity(new Tree(handler, 533, 276));
         entityManager.addEntity(new Rock(handler, 684, 1370));
@@ -31,14 +27,10 @@ public class World1 extends BaseWorld{
         entityManager.addEntity(new Tree(handler, 77, 700));
         entityManager.addEntity(new Rock(handler, 700, 83));
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
-
-        entityManager.addEntity(new Chest(handler, 200, 64));
-
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
-
     }
 
 }
