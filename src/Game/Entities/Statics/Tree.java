@@ -29,7 +29,7 @@ public class Tree extends StaticEntity {
         health=16;
 
         try {
-            audioFile = new File("res/Res.music/Chopping.wav");
+            audioFile = new File("res/music/Chopping.wav");
             audioStream = AudioSystem.getAudioInputStream(audioFile);
             format = audioStream.getFormat();
             info = new DataLine.Info(Clip.class, format);
