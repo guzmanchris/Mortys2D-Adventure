@@ -49,7 +49,7 @@ public class Game implements Runnable {
     //Handler
     private Handler handler;
 
-    //music
+    //Res.music
     private File audioFile;
     private AudioInputStream audioStream;
     private AudioFormat format;
@@ -67,7 +67,7 @@ public class Game implements Runnable {
         mouseManager = new MouseManager();
 
         try {
-            loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
+            loading = ImageIO.read(getClass().getResourceAsStream("//Sheets/loading.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,7 +94,7 @@ public class Game implements Runnable {
         State.setState(menuState);
 
         try {
-            audioFile = new File("res/music/nature.wav");
+            audioFile = new File("res/Res.music/nature.wav");
             audioStream = AudioSystem.getAudioInputStream(audioFile);
             format = audioStream.getFormat();
             info = new DataLine.Info(Clip.class, format);

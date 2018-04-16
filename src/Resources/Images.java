@@ -49,13 +49,13 @@ public class Images {
 
     public Images() {
 
-        SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
-        SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/numsheet.png"));
-        SpriteSheet runesheet = new SpriteSheet(Images.loadImage("/Sheets/runes.png"));
-        SpriteSheet FireBallsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBall.png"));
-        SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
-        SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
-        SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
+        SpriteSheet newsheet = new SpriteSheet(Images.loadImage("//Sheets/SpriteSheet.png"));
+        SpriteSheet numsheet = new SpriteSheet(Images.loadImage("//Sheets/numsheet.png"));
+        SpriteSheet runesheet = new SpriteSheet(Images.loadImage("//Sheets/runes.png"));
+        SpriteSheet FireBallsheet = new SpriteSheet(Images.loadImage("//Sheets/FireBall.png"));
+        SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("//Sheets/FireBallRight.png"));
+        SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("//Sheets/FireBallUp.png"));
+        SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("//Sheets/FireBallDown.png"));
 
 
 
@@ -90,21 +90,21 @@ public class Images {
 
         try {
 
-            loading = ImageIO.read(getClass().getResourceAsStream("/Sheets/loading.png"));
-            spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
+            loading = ImageIO.read(getClass().getResourceAsStream("//Sheets/loading.png"));
+            spellGUI = ImageIO.read(getClass().getResourceAsStream("//Sheets/SpellGUI.png"));
 
-            inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
-            title = ImageIO.read(getClass().getResourceAsStream("/Sheets/Title.png"));
-            door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
-            E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
-            EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
-            Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
-            Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
-            Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));
-            BTitle[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitle.png"));
-            BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
-            Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
-            Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+            inventory = ImageIO.read(getClass().getResourceAsStream("//Sheets/guit.png"));
+            title = ImageIO.read(getClass().getResourceAsStream("//Sheets/Title.png"));
+            door = ImageIO.read(getClass().getResourceAsStream("//Sheets/Door.png"));
+            E = ImageIO.read(getClass().getResourceAsStream("//Buttons/E.png"));
+            EP = ImageIO.read(getClass().getResourceAsStream("//Buttons/EP.png"));
+            Pause = ImageIO.read(getClass().getResourceAsStream("//Buttons/Pause.png"));
+            Resume[0] = ImageIO.read(getClass().getResourceAsStream("//Buttons/Resume.png"));
+            Resume[1] = ImageIO.read(getClass().getResourceAsStream("//Buttons/ResumeP.png"));
+            BTitle[0] = ImageIO.read(getClass().getResourceAsStream("//Buttons/BTitle.png"));
+            BTitle[1] = ImageIO.read(getClass().getResourceAsStream("//Buttons/BTitleP.png"));
+            Options[0] = ImageIO.read(getClass().getResourceAsStream("//Buttons/Options.png"));
+            Options[1] = ImageIO.read(getClass().getResourceAsStream("//Buttons/OptionsP.png"));
 
             //icon
             icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
@@ -151,7 +151,7 @@ public class Images {
             Runes[7]= runesheet.crop(Rwidth*7,Rheight*0,Rwidth,Rheight);
 
 
-            blocks[0] = ImageIO.read(getClass().getResourceAsStream("/Blocks/Slime.png"));
+            blocks[0] = ImageIO.read(getClass().getResourceAsStream("//Blocks/Slime.png"));
 
             butstart[0]= newsheet.crop(11,422,93,34);//normbut
             butstart[1]= newsheet.crop(11,456,93,33);//hoverbut

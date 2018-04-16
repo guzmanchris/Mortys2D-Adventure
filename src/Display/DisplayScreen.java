@@ -33,7 +33,7 @@ public class DisplayScreen {
 		frame.setVisible(true);
 		frame.setBackground(Color.black);
 
-		iconURL = getClass().getResource("/Sheets/icon.png");
+		iconURL = getClass().getResource("//Sheets/icon.png");
 		ImageIcon icon = new ImageIcon(iconURL);
 		frame.setIconImage(icon.getImage());
 
