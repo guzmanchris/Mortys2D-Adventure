@@ -8,6 +8,8 @@ import Worlds.BaseWorld;
 
 import java.awt.*;
 
+import com.sun.glass.events.KeyEvent;
+
 /**
  * Created by Elemental on 2/2/2017.
  */
@@ -66,7 +68,7 @@ public class Door extends StaticEntity {
 
         if(ir.contains(pr) && !EP){
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
-        }else if(ir.contains(pr) && EP){
+        }else if(ir.contains(pr) && EP  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
             g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
             g.drawImage(Images.loading,0,0,800,600,null);
             handler.setWorld(world);
