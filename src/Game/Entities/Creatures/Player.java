@@ -85,6 +85,10 @@ public class Player extends CreatureBase {
         animFireATTU.tick();
         animFireATTD.tick();
 
+        //Debugging Tool (Resets health)
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)) {
+        	health = 75;
+        }
 
 
         //Movement
