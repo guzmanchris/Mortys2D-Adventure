@@ -46,6 +46,13 @@ public class Inventory {
             handler.getWorld().getEntityManager().getPlayer().getSpellGUI().setActive(false);
 
         }
+        
+        //Debugging Tool
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)) {
+        	for(int i=0; i<Item.totalItems; i++) {
+        		addItem(Item.items[i]);
+        	}
+        }
 
         if(!active){
             return;

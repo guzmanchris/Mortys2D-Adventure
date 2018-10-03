@@ -26,6 +26,7 @@ public class Item {
     //handler
 
     public static Item[] items = new Item[256];
+    public static int totalItems = 0;
 
     public static Item woodItem = new Item(Images.items[0],"Wood",0);
     public static Item rockItem = new Item(Images.blocks[14],"Rock",1);
@@ -43,6 +44,7 @@ public class Item {
         bounds = new Rectangle(x,y,ITEMWIDTH,ITEMWEIGHT);
 
         items[id]=this;
+        totalItems++;
     }
     public Item(BufferedImage texture, String name, int id,int height,int width){
         this.texture=texture;
@@ -55,6 +57,7 @@ public class Item {
         bounds = new Rectangle(x,y,ITEMWIDTH,ITEMWEIGHT);
 
         items[id]=this;
+        totalItems++;
     }
 
 
