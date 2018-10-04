@@ -31,8 +31,8 @@ public class Item {
     public static Item woodItem = new Item(Images.items[0],"Wood",0);
     public static Item rockItem = new Item(Images.blocks[14],"Rock",1);
     public static Item fireRuneItem = new Item(Images.Runes[2],"Fire Rune",2);
-    //coin item here(Set id to 3, change keyId to 4)
-    public static Item keyItem = new Item(Images.keyItem, "Key", 3);
+    public static Item coinItem = new Item(Images.coinItem, "Coin", 3);
+    public static Item keyItem = new Item(Images.keyItem, "Key", 4);
 
 
     //class
