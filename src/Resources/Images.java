@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import net.coobird.thumbnailator.Thumbnails;
 
 /**
  * Created by Elemental on 12/19/2016.
@@ -24,6 +25,10 @@ public class Images {
     public static BufferedImage[] SkelyEnemy_left;
     public static BufferedImage[] SkelyEnemy_front;
     public static BufferedImage[] SkelyEnemy_back;
+    public static BufferedImage[] MortyEnemy_right;
+    public static BufferedImage[] MortyEnemy_left;
+    public static BufferedImage[] MortyEnemy_front;
+    public static BufferedImage[] MortyEnemy_back;
     public static BufferedImage[] butstart;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
@@ -57,6 +62,8 @@ public class Images {
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
+        SpriteSheet MortyEnemyRight = new SpriteSheet(Images.loadImage("/Sheets/pocketMortyR.png"));
+        SpriteSheet MortyEnemyFLB = new SpriteSheet(Images.loadImage("/Sheets/pocketMorty.png"));
 
 
 
@@ -71,6 +78,11 @@ public class Images {
         SkelyEnemy_right = new BufferedImage[4];
         SkelyEnemy_front = new BufferedImage[4];
         SkelyEnemy_back = new BufferedImage[4];
+        
+        MortyEnemy_left = new BufferedImage[4];
+        MortyEnemy_right = new BufferedImage[4];
+        MortyEnemy_front = new BufferedImage[4];
+        MortyEnemy_back = new BufferedImage[4];
 
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
@@ -246,6 +258,28 @@ public class Images {
             SkelyEnemy_back[2]=newsheet.crop(196,227+130,width,height);
             SkelyEnemy_back[3]=newsheet.crop(228,227+130,28,height);
 
+            //Morty enemy anim
+            MortyEnemy_front[0]=resize(MortyEnemyFLB.crop(18,37,93,115),width,height);
+            MortyEnemy_front[1]=resize(MortyEnemyFLB.crop(150,33,91,120),width,height);
+            MortyEnemy_front[2]=resize(MortyEnemyFLB.crop(277,36,93,116),width,height);
+            MortyEnemy_front[3]=resize(MortyEnemyFLB.crop(411,35,87,119),width,height);
+
+            MortyEnemy_left[0]=resize(MortyEnemyFLB.crop(24,204,82,116),width,height);
+            MortyEnemy_left[1]=resize(MortyEnemyFLB.crop(152,204,82,116),width,height);
+            MortyEnemy_left[2]=resize(MortyEnemyFLB.crop(282,204,83,116),width,height);
+            MortyEnemy_left[3]=resize(MortyEnemyFLB.crop(412,204,84,116),width,height);
+
+            MortyEnemy_right[0]=resize(MortyEnemyRight.crop(8,50,81,116),width,height);
+            MortyEnemy_right[1]=resize(MortyEnemyRight.crop(138,50,81,115),width,height);
+            MortyEnemy_right[2]=resize(MortyEnemyRight.crop(268,50,81,116),width,height);
+            MortyEnemy_right[3]=resize(MortyEnemyRight.crop(398,50,79,115),width,height);
+
+            MortyEnemy_back[0]=resize(MortyEnemyFLB.crop(25,373,84,111),width,height);
+            MortyEnemy_back[1]=resize(MortyEnemyFLB.crop(155,375,83,111),width,height);
+            MortyEnemy_back[2]=resize(MortyEnemyFLB.crop(284,373,83,112),width,height);
+            MortyEnemy_back[3]=resize(MortyEnemyFLB.crop(414,372,81,112),width,height);
+
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -260,6 +294,10 @@ public class Images {
             System.exit(1);
         }
         return null;
+    }
+    
+    public static BufferedImage resize(BufferedImage img, int newW, int newH) throws IOException {
+    	return Thumbnails.of(img).size(newW,newH).asBufferedImage();
     }
 
 
