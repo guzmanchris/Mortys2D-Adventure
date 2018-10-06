@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="res"/>
-	<classpathentry kind="lib" path="C:/Users/Christian/Desktop/thumbnailator-0.4.5.jar/thumbnailator-0.4.5.jar"/>
+	<classpathentry kind="lib" path="libraries/thumbnailator-0.4.5.jar"/>
 	<classpathentry kind="output" path="out/production/2DMagika"/>
 </classpath>
