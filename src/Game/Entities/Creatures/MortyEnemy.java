@@ -7,6 +7,7 @@ import java.util.Random;
 
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
+import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
@@ -183,7 +184,7 @@ public class MortyEnemy extends CreatureBase {
 
 	@Override
 	public void die() {
-		// TODO Auto-generated method stub
+		handler.getWorld().getItemManager().addItem(Item.wizardItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
 	}
 
