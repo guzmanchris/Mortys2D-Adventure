@@ -29,6 +29,10 @@ public class Images {
     public static BufferedImage[] MortyEnemy_left;
     public static BufferedImage[] MortyEnemy_front;
     public static BufferedImage[] MortyEnemy_back;
+    public static BufferedImage[] MortyAlly_right;
+    public static BufferedImage[] MortyAlly_left;
+    public static BufferedImage[] MortyAlly_front;
+    public static BufferedImage[] MortyAlly_back;
     public static BufferedImage[] butstart;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
@@ -63,8 +67,10 @@ public class Images {
         SpriteSheet FireBallRightsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallRight.png"));
         SpriteSheet FireBallUpsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallUp.png"));
         SpriteSheet FireBallDownsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBallDown.png"));
-        SpriteSheet MortyEnemyRight = new SpriteSheet(Images.loadImage("/Sheets/pocketMortyR.png"));
-        SpriteSheet MortyEnemyFLB = new SpriteSheet(Images.loadImage("/Sheets/pocketMorty.png"));
+        SpriteSheet MortyEnemyRight = new SpriteSheet(Images.loadImage("/Sheets/zombieMortyR.png"));
+        SpriteSheet MortyEnemyFLB = new SpriteSheet(Images.loadImage("/Sheets/zombieMorty.png"));
+        SpriteSheet MortyAllyRight = new SpriteSheet(Images.loadImage("/Sheets/wizardMortyR.png"));
+        SpriteSheet MortyAllyFLB = new SpriteSheet(Images.loadImage("/Sheets/wizardMorty.png"));
 
 
 
@@ -84,6 +90,11 @@ public class Images {
         MortyEnemy_right = new BufferedImage[4];
         MortyEnemy_front = new BufferedImage[4];
         MortyEnemy_back = new BufferedImage[4];
+        
+        MortyAlly_left = new BufferedImage[4];
+        MortyAlly_right = new BufferedImage[4];
+        MortyAlly_front = new BufferedImage[4];
+        MortyAlly_back = new BufferedImage[4];
 
         butstart = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
@@ -259,27 +270,48 @@ public class Images {
             SkelyEnemy_back[1]=newsheet.crop(164,227+130,width,height);
             SkelyEnemy_back[2]=newsheet.crop(196,227+130,width,height);
             SkelyEnemy_back[3]=newsheet.crop(228,227+130,28,height);
+            
+            //MortyEnemy anim
+            MortyEnemy_front[0]=resize(MortyEnemyFLB.crop(14,50,82,111),width,height);
+            MortyEnemy_front[1]=resize(MortyEnemyFLB.crop(139,46,84,115),width,height);
+            MortyEnemy_front[2]=resize(MortyEnemyFLB.crop(274,49,82,112),width,height);
+            MortyEnemy_front[3]=resize(MortyEnemyFLB.crop(409,50,81,112),width,height);
 
-            //Morty enemy anim
-            MortyEnemy_front[0]=resize(MortyEnemyFLB.crop(18,37,93,115),width,height);
-            MortyEnemy_front[1]=resize(MortyEnemyFLB.crop(150,33,91,120),width,height);
-            MortyEnemy_front[2]=resize(MortyEnemyFLB.crop(277,36,93,116),width,height);
-            MortyEnemy_front[3]=resize(MortyEnemyFLB.crop(411,35,87,119),width,height);
+            MortyEnemy_left[0]=resize(MortyEnemyFLB.crop(18,216,85,113),width,height);
+            MortyEnemy_left[1]=resize(MortyEnemyFLB.crop(158,216,79,115),width,height);
+            MortyEnemy_left[2]=resize(MortyEnemyFLB.crop(278,216,84,113),width,height);
+            MortyEnemy_left[3]=resize(MortyEnemyFLB.crop(403,216,83,114),width,height);
 
-            MortyEnemy_left[0]=resize(MortyEnemyFLB.crop(24,204,82,116),width,height);
-            MortyEnemy_left[1]=resize(MortyEnemyFLB.crop(152,204,82,116),width,height);
-            MortyEnemy_left[2]=resize(MortyEnemyFLB.crop(282,204,83,116),width,height);
-            MortyEnemy_left[3]=resize(MortyEnemyFLB.crop(412,204,84,116),width,height);
+            MortyEnemy_right[0]=resize(MortyEnemyRight.crop(397,24,83,112),width,height);
+            MortyEnemy_right[1]=resize(MortyEnemyRight.crop(262,24,80,114),width,height);
+      		MortyEnemy_right[2]=resize(MortyEnemyRight.crop(136,24,85,112),width,height);
+            MortyEnemy_right[3]=resize(MortyEnemyRight.crop(13,24,84,114),width,height);
 
-            MortyEnemy_right[0]=resize(MortyEnemyRight.crop(8,50,81,116),width,height);
-            MortyEnemy_right[1]=resize(MortyEnemyRight.crop(138,50,81,115),width,height);
-            MortyEnemy_right[2]=resize(MortyEnemyRight.crop(268,50,81,116),width,height);
-            MortyEnemy_right[3]=resize(MortyEnemyRight.crop(398,50,79,115),width,height);
+            MortyEnemy_back[0]=resize(MortyEnemyFLB.crop(23,385,82,111),width,height);
+            MortyEnemy_back[1]=resize(MortyEnemyFLB.crop(155,383,86,114),width,height);
+            MortyEnemy_back[2]=resize(MortyEnemyFLB.crop(281,385,84,111),width,height);
+            MortyEnemy_back[3]=resize(MortyEnemyFLB.crop(405,383,83,112),width,height);
 
-            MortyEnemy_back[0]=resize(MortyEnemyFLB.crop(25,373,84,111),width,height);
-            MortyEnemy_back[1]=resize(MortyEnemyFLB.crop(155,375,83,111),width,height);
-            MortyEnemy_back[2]=resize(MortyEnemyFLB.crop(284,373,83,112),width,height);
-            MortyEnemy_back[3]=resize(MortyEnemyFLB.crop(414,372,81,112),width,height);
+            //MortyAlly anim
+            MortyAlly_front[0]=resize(MortyAllyFLB.crop(18,37,93,115),width,height);
+            MortyAlly_front[1]=resize(MortyAllyFLB.crop(150,33,91,120),width,height);
+            MortyAlly_front[2]=resize(MortyAllyFLB.crop(277,36,93,116),width,height);
+            MortyAlly_front[3]=resize(MortyAllyFLB.crop(411,35,87,119),width,height);
+
+            MortyAlly_left[0]=resize(MortyAllyFLB.crop(24,204,82,116),width,height);
+            MortyAlly_left[1]=resize(MortyAllyFLB.crop(152,204,82,116),width,height);
+            MortyAlly_left[2]=resize(MortyAllyFLB.crop(282,204,83,116),width,height);
+            MortyAlly_left[3]=resize(MortyAllyFLB.crop(412,204,84,116),width,height);
+
+            MortyAlly_right[0]=resize(MortyAllyRight.crop(8,50,81,116),width,height);
+            MortyAlly_right[1]=resize(MortyAllyRight.crop(138,50,81,115),width,height);
+            MortyAlly_right[2]=resize(MortyAllyRight.crop(268,50,81,116),width,height);
+            MortyAlly_right[3]=resize(MortyAllyRight.crop(398,50,79,115),width,height);
+
+            MortyAlly_back[0]=resize(MortyAllyFLB.crop(25,373,84,111),width,height);
+            MortyAlly_back[1]=resize(MortyAllyFLB.crop(155,375,83,111),width,height);
+            MortyAlly_back[2]=resize(MortyAllyFLB.crop(284,373,83,112),width,height);
+            MortyAlly_back[3]=resize(MortyAllyFLB.crop(414,372,81,112),width,height);
 
             
         } catch (IOException e) {
