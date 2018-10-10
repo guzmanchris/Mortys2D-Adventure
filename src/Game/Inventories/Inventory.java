@@ -92,14 +92,12 @@ public class Inventory {
     			xPos = 25;
     			yPos +=60;
     			} 
-    		//Do not increment x position if on first column.
-    		if(!(i==0 || i==5 || i==10 || i==15)) {
-    		xPos += 61;
-    		}
     		//Only draw image if inventory not full (Maximum of 20 items)
     		if(!(i>20)) {
     		g.drawImage(inventoryItems.get(i).getTexture(), xPos, yPos, inventoryItems.get(i).getWidth(), inventoryItems.get(i).getHeight(), null);
     		g.drawString(String.valueOf(inventoryItems.get(i).getCount()), xPos+33,yPos+35);
+    		//Increment x position
+    		xPos+=61;
     		}
     	}
 
