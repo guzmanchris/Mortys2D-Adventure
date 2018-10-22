@@ -32,6 +32,7 @@ public class MortyAlly extends CreatureBase {
 	     bounds.height=14*2;
 	     speed=1.5f;
 	     health=100;
+	     visible=false;
 	     
 	     MortyCam= new Rectangle();
 
@@ -45,48 +46,65 @@ public class MortyAlly extends CreatureBase {
 
 	@Override
 	public void tick() {
-		 animDown.tick();
-	        animUp.tick();
-	        animRight.tick();
-	        animLeft.tick();
-
-	        
-	        checkIfMove();
-
-	        move();
-
-
-	        if(isBeinghurt()){
-	            healthcounter++;
-	            if(healthcounter>=120){
-	                setBeinghurt(false);
-	                System.out.print(isBeinghurt());
-	            }
-	        }
-	        if(healthcounter>=120&& !isBeinghurt()){
-	            healthcounter=0;
-	        }
-
-
-	        Mortyinventory.tick();
-
-
+		if(visible) {
+			animDown.tick();
+		    animUp.tick();
+		    animRight.tick();
+		    animLeft.tick();
+	
+		        
+		    checkIfMove();
+	
+		    move();
+	
+	
+		    if(isBeinghurt()){
+		        healthcounter++;
+		        if(healthcounter>=120){
+		                setBeinghurt(false);
+		                System.out.print(isBeinghurt());
+		            }
+		    }
+		    if(healthcounter>=120&& !isBeinghurt()){
+		            healthcounter=0;
+		    }
+	
+	
+		    Mortyinventory.tick();
+		}
+		else {
+			for(Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
+				if(handler.getKeyManager().allybut && i.getName().equals("Wizard")) {
+					visible=true;
+					i.setCount(i.getCount()-1);
+					if(handler.getWorld().getEntityManager().getPlayer().getY()-handler.getWorld().getEntityManager().getPlayer().getHeight()-50>64) {
+						x=handler.getWorld().getEntityManager().getPlayer().getX();
+						y=handler.getWorld().getEntityManager().getPlayer().getY()-handler.getWorld().getEntityManager().getPlayer().getHeight()-50;
+					}
+					else {
+						x=handler.getWorld().getEntityManager().getPlayer().getX();
+						y=handler.getWorld().getEntityManager().getPlayer().getY()+handler.getWorld().getEntityManager().getPlayer().getHeight()+50;
+					}
+				}
+			}
+		}
 
 	}
 
 	
 	private void checkIfMove() {
-   //TODO movement mechanics
+		//TODO movement mechanics
     }
 
 	@Override
 	public void render(Graphics g) {
-		 g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.MortyAlly_front,Images.MortyAlly_back,Images.MortyAlly_left,Images.MortyAlly_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
-	        if(isBeinghurt() && healthcounter<=120){
-	            g.setColor(Color.white);
-	            g.drawString("MortyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
-	        }
-
+		if(visible) {
+				g.drawImage(getCurrentAnimationFrame(animDown,animUp,animLeft,animRight,Images.MortyAlly_front,Images.MortyAlly_back,Images.MortyAlly_left,Images.MortyAlly_right), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+		        if(isBeinghurt() && healthcounter<=120){
+		            g.setColor(Color.white);
+		            g.drawString("MortyHealth: " + getHealth(),(int) (x-handler.getGameCamera().getxOffset()),(int) (y-handler.getGameCamera().getyOffset()-20));
+		        }
+		}
 	}
 
 	@Override

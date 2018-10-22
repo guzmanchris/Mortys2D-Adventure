@@ -1,4 +1,5 @@
 package Worlds;
+import Game.Entities.Creatures.MortyAlly;
 import Game.Entities.Creatures.MortyEnemy;
 import Game.Entities.Creatures.Player;
 import Main.Handler;
@@ -16,6 +17,7 @@ public class CaveWorld extends BaseWorld{
         this.player=player;
         
         entityManager.addEntity(new MortyEnemy(handler, 1250, 500));
+        entityManager.addEntity(new MortyAlly(handler,0,0));
 
     }
 
