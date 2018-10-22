@@ -33,7 +33,7 @@ public class Inventory {
     }
 
     public void tick() {
-
+    	
         for(Item i : inventoryItems){
             if(i.getCount()==0){
                 inventoryItems.remove(inventoryItems.indexOf(i));
@@ -49,9 +49,16 @@ public class Inventory {
         
         //Debugging Tool
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)) {
-        	for(int i=0; i<Item.totalItems; i++) {
-        		addItem(Item.items[i]);
+        	if(inventoryItems.size() < Item.totalItems) {
+	        	for(int i=0; i<Item.totalItems; i++) {
+	        			addItem(Item.items[i]);
+	        	}
         	}
+        	else {
+        		 for(Item item : inventoryItems){
+        	                item.setCount(item.getCount()+1);
+        	        }
+        		}
         }
 
         if(!active){
@@ -154,7 +161,7 @@ public class Inventory {
         inventoryItems.add(item);
 
     }
-
+ 
     //GET SET
     public Handler getHandler() {
         return handler;

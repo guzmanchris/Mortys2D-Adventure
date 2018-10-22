@@ -1,6 +1,7 @@
 package Game.Entities.Statics;
 
 import Game.Entities.Creatures.Player;
+import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
@@ -14,6 +15,10 @@ public class WizardHumanoid extends StaticEntity {
     public Boolean EP = false;
 
     private BaseWorld world;
+    private int keys;
+    private int coins;
+    private int ticks=0;
+    
 
     public WizardHumanoid(Handler handler, float x, float y,BaseWorld world) {
         super(handler, x, y, 96, 79);
@@ -23,6 +28,8 @@ public class WizardHumanoid extends StaticEntity {
         bounds.y=0;
         bounds.width = 79;
         bounds.height = 96;
+        keys = 1;
+        coins = 3; 
 
         ir.width = bounds.width;
         ir.height = bounds.height;
@@ -31,21 +38,21 @@ public class WizardHumanoid extends StaticEntity {
         ir.y=iry;
         ir.x=irx;
     }
+    
 
-    @Override
+	@Override
     public void tick() {
 
+		ticks++;
+		
         if(isBeinghurt()){
             setHealth(10000000);
         }
 
-        if(handler.getKeyManager().attbut){
-            EP=true;
-
-        }else if(!handler.getKeyManager().attbut){
-            EP=false;
+        if(handler.getKeyManager().attbut && ticks>10){
+            EP=!EP;
+            ticks=0;
         }
-
     }
 
     @Override
@@ -59,13 +66,37 @@ public class WizardHumanoid extends StaticEntity {
     private void checkForPlayer(Graphics g, Player p) {
         Rectangle pr = p.getCollisionBounds(0,0);
 
+        
+        if(!ir.contains(pr)) EP = false;
         if(ir.contains(pr) && !EP){
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
-        }else if(ir.contains(pr) && EP){
-            //TODO ask for items and check if player has them
-
+        }else if(ir.contains(pr)){
+        	if(keys>0 || coins>0) {
+	        	g.drawImage(Images.wizardInstructions[0],(int) x+width,(int) y, null);
+	            
+	            //Draw Items Required
+	            g.drawImage(Images.keyItem,(int) x+width+8,(int) y+50-16, 32, 32, null);
+	            g.drawString(Integer.toString(keys),(int) x+width+8+16 ,(int) y+50+16+20 );
+	            g.drawImage(Images.coinItem,(int) x+width+8+32+20, (int) y+50-16,32,32,null);
+	            g.drawString(Integer.toString(coins),(int) x+width+8+32+20+16 ,(int) y+50+16+20);
+	            
+	            //Retrieve Items if on players inventory
+	            for(Item item : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
+	            		if(item.getId() == 4 && keys>0) {
+	            			item.setCount(item.getCount()-1);
+	            			keys--;
+	            		}
+	            		if(item.getId() == 3 && coins>0) {
+	            			item.setCount(item.getCount()-1);
+	            			coins--;
+	            		}
+	            }
+        		}
+	        	else {
+	        		//TODO make door visible
+	        		g.drawImage(Images.wizardInstructions[1],(int) x+width,(int) y, null);
+	        	}
         }
-
 
     }
 

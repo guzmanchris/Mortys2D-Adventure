@@ -58,6 +58,7 @@ public class Images {
     public static BufferedImage coinItem;
     public static BufferedImage wizardHumanoid;
     public static BufferedImage wizardItem;
+    public static BufferedImage[] wizardInstructions;
 
 
     public Images() {
@@ -111,7 +112,8 @@ public class Images {
         FireBallRight = new BufferedImage[6];
         FireBallUp = new BufferedImage[6];
         FireBallDown = new BufferedImage[6];
-
+        
+        wizardInstructions = new BufferedImage[2];
 
 
 
@@ -193,6 +195,9 @@ public class Images {
             particleSmoke[2]= newsheet.crop(154,400,20,35);
 
             items[0]= newsheet.crop(114,448,30,24);//log
+            
+            wizardInstructions[0] = ImageIO.read(getClass().getResource("/Sheets/retrieve.png"));
+            wizardInstructions[1] = ImageIO.read(getClass().getResource("/Sheets/continue.png"));
 
             numbers[1]= numsheet.crop(17,15,17,22);
             numbers[2]= numsheet.crop(64,16,14,19);
