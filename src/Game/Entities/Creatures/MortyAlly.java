@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import com.sun.glass.events.KeyEvent;
+
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
 import Game.Items.Item;
@@ -30,7 +32,7 @@ public class MortyAlly extends CreatureBase {
 	     bounds.y=18*2;
 	     bounds.width=16*2;
 	     bounds.height=14*2;
-	     speed=1.5f;
+	     speed=DEFAULT_SPEED;
 	     health=100;
 	     visible=false;
 	     
@@ -52,7 +54,10 @@ public class MortyAlly extends CreatureBase {
 		    animRight.tick();
 		    animLeft.tick();
 	
-		        
+		     //Press r to reposition next to player
+		    if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
+		    	spawn();
+		    }
 		    checkIfMove();
 	
 		    move();
@@ -77,14 +82,7 @@ public class MortyAlly extends CreatureBase {
 				if(handler.getKeyManager().allybut && i.getName().equals("Wizard")) {
 					visible=true;
 					i.setCount(i.getCount()-1);
-					if(handler.getWorld().getEntityManager().getPlayer().getY()-handler.getWorld().getEntityManager().getPlayer().getHeight()-50>64) {
-						x=handler.getWorld().getEntityManager().getPlayer().getX();
-						y=handler.getWorld().getEntityManager().getPlayer().getY()-handler.getWorld().getEntityManager().getPlayer().getHeight()-50;
-					}
-					else {
-						x=handler.getWorld().getEntityManager().getPlayer().getX();
-						y=handler.getWorld().getEntityManager().getPlayer().getY()+handler.getWorld().getEntityManager().getPlayer().getHeight()+50;
-					}
+					spawn();
 				}
 			}
 		}
@@ -93,9 +91,43 @@ public class MortyAlly extends CreatureBase {
 
 	
 	private void checkIfMove() {
-		//TODO movement mechanics
-    }
+		xMove=0;
+		yMove=0;
+		
+		if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 3 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 3) {//dont move
+            xMove = 0;
+        }
+		else if(x>handler.getWorld().getEntityManager().getPlayer().getX()) {//move Left
+			xMove = -speed; 
+		}
+		else if(x<handler.getWorld().getEntityManager().getPlayer().getX()) {//move Right
+			xMove = speed;
+		}
+	 
+		if ((y >= handler.getWorld().getEntityManager().getPlayer().getY()+60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()+60+3) || (y >= handler.getWorld().getEntityManager().getPlayer().getY()-60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()-60+3)) {//dont move
+            yMove = 0;
+            }
+		else if(y>handler.getWorld().getEntityManager().getPlayer().getY()+60 || y>handler.getWorld().getEntityManager().getPlayer().getY()-60) {//move up
+			yMove=-speed;
+			}
+		else if(y<handler.getWorld().getEntityManager().getPlayer().getY()+60 || y<handler.getWorld().getEntityManager().getPlayer().getY()-60) {//move down
+			yMove=speed;
+			}
+			
+	}
+	
+	public void spawn() {
+		if(handler.getWorld().getEntityManager().getPlayer().getY()-60>64) {
+			x=handler.getWorld().getEntityManager().getPlayer().getX();
+			y=handler.getWorld().getEntityManager().getPlayer().getY()-60;
+		}
+		else {
+			x=handler.getWorld().getEntityManager().getPlayer().getX();
+			y=handler.getWorld().getEntityManager().getPlayer().getY()+60;
+		}
+	}
 
+	
 	@Override
 	public void render(Graphics g) {
 		if(visible) {
