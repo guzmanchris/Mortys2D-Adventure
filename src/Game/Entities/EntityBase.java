@@ -21,6 +21,7 @@ public abstract class EntityBase {
     protected Rectangle bounds;
     protected boolean beinghurt=false;
     protected int count = 0;
+    protected boolean visible;
 
 
     public EntityBase(Handler handler, float x, float y, int height, int width){
