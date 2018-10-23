@@ -24,6 +24,9 @@ public class MortyAlly extends CreatureBase {
     
     private int healthcounter =0;
     
+    private boolean attackMode=false;
+    
+    private int ticks=0;
 
 	
 	public MortyAlly(Handler handler, float x, float y) {
@@ -49,6 +52,8 @@ public class MortyAlly extends CreatureBase {
 	@Override
 	public void tick() {
 		if(visible) {
+			ticks++;
+			
 			animDown.tick();
 		    animUp.tick();
 		    animRight.tick();
@@ -58,10 +63,16 @@ public class MortyAlly extends CreatureBase {
 		    if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_R)) {
 		    	spawn();
 		    }
+		    
+		    //Press z to enable attack mode
+	        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_Z) && ticks>10){
+	        	attackMode = !attackMode;
+	        	ticks = 0;
+	        }
+	        
 		    checkIfMove();
 	
 		    move();
-	
 	
 		    if(isBeinghurt()){
 		        healthcounter++;
@@ -74,6 +85,7 @@ public class MortyAlly extends CreatureBase {
 		            healthcounter=0;
 		    }
 	
+		    
 	
 		    Mortyinventory.tick();
 		}
@@ -94,24 +106,85 @@ public class MortyAlly extends CreatureBase {
 		xMove=0;
 		yMove=0;
 		
-		if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 3 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 3) {//dont move
-            xMove = 0;
-        }
-		else if(x>handler.getWorld().getEntityManager().getPlayer().getX()) {//move Left
-			xMove = -speed; 
-		}
-		else if(x<handler.getWorld().getEntityManager().getPlayer().getX()) {//move Right
-			xMove = speed;
-		}
-	 
-		if ((y >= handler.getWorld().getEntityManager().getPlayer().getY()+60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()+60+3) || (y >= handler.getWorld().getEntityManager().getPlayer().getY()-60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()-60+3)) {//dont move
-            yMove = 0;
-            }
-		else if(y>handler.getWorld().getEntityManager().getPlayer().getY()+60 || y>handler.getWorld().getEntityManager().getPlayer().getY()-60) {//move up
-			yMove=-speed;
+		if(attackMode && enemiesInWorld()) {
+			MortyCam.x = (int) (x - handler.getGameCamera().getxOffset() - (64 * 3));
+		     MortyCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
+		     MortyCam.width = 64 * 7;
+		     MortyCam.height = 64 * 7;
+			
+		     Rectangle cb = getCollisionBounds(0, 0);
+	         Rectangle ar = new Rectangle();
+	         int arSize = 13;
+	         ar.width = arSize;
+	         ar.height = arSize;
+	
+	         if (lu) {
+	             ar.x = cb.x + cb.width / 2 - arSize / 2;
+	             ar.y = cb.y - arSize;
+	         } else if (ld) {
+	             ar.x = cb.x + cb.width / 2 - arSize / 2;
+	             ar.y = cb.y + cb.height;
+	         } else if (ll) {
+	             ar.x = cb.x - arSize;
+	             ar.y = cb.y + cb.height / 2 - arSize / 2;
+	         } else if (lr) {
+	             ar.x = cb.x + cb.width;
+	             ar.y = cb.y + cb.height / 2 - arSize / 2;
+	         }
+		   
+			     for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
+			    	 if(e instanceof SkelyEnemy){ 
+			    		 
+				    	if(e.getCollisionBounds(0, 0).intersects(ar)) {	
+			    		 checkAttacks();
+				    	}
+				    		 
+				    		 
+				    		 	if (x >= e.getX() - 8 && x <= e.getX() + 8) {//dont move
+					 	            xMove = 0;
+					 	        }
+					 			else if(x>e.getX()) {//move Left
+					 				xMove = -speed; 
+					 			}
+					 			else if(x<e.getX()) {//move Right
+					 				xMove = speed;
+					 			}
+					 		 
+					 			if ((y >= e.getY()-8 && y <= e.getY()+8)) {//dont move
+					 	            yMove = 0;
+					 	            }
+					 			else if(y>e.getY()) {//move up
+					 				yMove=-speed;
+					 				}
+					 			else if(y<e.getY()) {//move down
+					 				yMove=speed;
+					 				}
+			 			
+			    	 }
+			     }
 			}
-		else if(y<handler.getWorld().getEntityManager().getPlayer().getY()+60 || y<handler.getWorld().getEntityManager().getPlayer().getY()-60) {//move down
-			yMove=speed;
+		
+			
+		else { 
+			     if (x >= handler.getWorld().getEntityManager().getPlayer().getX() - 3 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 3) {//dont move
+			            xMove = 0;
+			        }
+					else if(x>handler.getWorld().getEntityManager().getPlayer().getX()) {//move Left
+						xMove = -speed; 
+					}
+					else if(x<handler.getWorld().getEntityManager().getPlayer().getX()) {//move Right
+						xMove = speed;
+					}
+				 
+					if ((y >= handler.getWorld().getEntityManager().getPlayer().getY()+60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()+60+3) || (y >= handler.getWorld().getEntityManager().getPlayer().getY()-60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()-60+3)) {//dont move
+			            yMove = 0;
+			            }
+					else if(y>handler.getWorld().getEntityManager().getPlayer().getY()+60 || y>handler.getWorld().getEntityManager().getPlayer().getY()-60) {//move up
+						yMove=-speed;
+						}
+					else if(y<handler.getWorld().getEntityManager().getPlayer().getY()+60 || y<handler.getWorld().getEntityManager().getPlayer().getY()-60) {//move down
+						yMove=speed;
+						}
 			}
 			
 	}
@@ -127,6 +200,15 @@ public class MortyAlly extends CreatureBase {
 		}
 	}
 
+	
+	public boolean enemiesInWorld() {
+		for(EntityBase e :  handler.getWorld().getEntityManager().getEntities()) {
+			if(e instanceof SkelyEnemy) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	@Override
 	public void render(Graphics g) {
