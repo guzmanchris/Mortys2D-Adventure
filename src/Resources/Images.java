@@ -4,7 +4,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import net.coobird.thumbnailator.Thumbnails;
 
 /**
  * Created by Elemental on 12/19/2016.
@@ -74,7 +73,8 @@ public class Images {
         SpriteSheet MortyEnemyFLB = new SpriteSheet(Images.loadImage("/Sheets/zombieMorty.png"));
         SpriteSheet MortyAllyRight = new SpriteSheet(Images.loadImage("/Sheets/wizardMortyR.png"));
         SpriteSheet MortyAllyFLB = new SpriteSheet(Images.loadImage("/Sheets/wizardMorty.png"));
-
+        SpriteSheet RegularMortyRight = new SpriteSheet(Images.loadImage("/Sheets/regularMortyR.png"));
+        SpriteSheet RegularMortyFLB = new SpriteSheet(Images.loadImage("/Sheets/regularMorty.png"));
 
 
         blocks = new BufferedImage[15];
@@ -239,25 +239,25 @@ public class Images {
 
 
             //player anim
-            player_front[0]=newsheet.crop(132,131,width,height);
-            player_front[1]=newsheet.crop(164,131,width,height);
-            player_front[2]=newsheet.crop(196,131,width,height);
-            player_front[3]=newsheet.crop(228,131,28,height);
+            player_front[0]=RegularMortyFLB.crop(25,54,82,110);
+            player_front[1]=RegularMortyFLB.crop(154,50,82,116);
+            player_front[2]=RegularMortyFLB.crop(283,52,82,110);
+            player_front[3]=RegularMortyFLB.crop(413,51,82,116);
 
-            player_left[0]=newsheet.crop(132,163,width,height);
-            player_left[1]=newsheet.crop(164,163,width,height);
-            player_left[2]=newsheet.crop(196,163,width,height);
-            player_left[3]=newsheet.crop(228,163,28,height);
+            player_left[0]=RegularMortyFLB.crop(25,220,80,111);
+            player_left[1]=RegularMortyFLB.crop(153,220,81,111);
+            player_left[2]=RegularMortyFLB.crop(282,220,81,111);
+            player_left[3]=RegularMortyFLB.crop(413,221,78,111);
 
-            player_right[0]=newsheet.crop(132,195,width,height);
-            player_right[1]=newsheet.crop(164,195,width,height);
-            player_right[2]=newsheet.crop(196,195,width,height);
-            player_right[3]=newsheet.crop(228,195,28,height);
+            player_right[3]=RegularMortyRight.crop(23,51,80,111);
+            player_right[0]=RegularMortyRight.crop(152,51,81,110);
+            player_right[1]=RegularMortyRight.crop(281,51,80,111);
+            player_right[2]=RegularMortyRight.crop(410,51,80,110);
 
-            player_back[0]=newsheet.crop(132,227,width,height);
-            player_back[1]=newsheet.crop(164,227,width,height);
-            player_back[2]=newsheet.crop(196,227,width,height);
-            player_back[3]=newsheet.crop(228,227,28,height);
+            player_back[0]=RegularMortyFLB.crop(26,386,83,111);
+            player_back[1]=RegularMortyFLB.crop(155,384,82,114);
+            player_back[2]=RegularMortyFLB.crop(285,386,82,111);
+            player_back[3]=RegularMortyFLB.crop(415,384,80,112);
 
             //Skely enemy anim
             SkelyEnemy_front[0]=newsheet.crop(132,131+130,width,height);
@@ -281,46 +281,46 @@ public class Images {
             SkelyEnemy_back[3]=newsheet.crop(228,227+130,28,height);
             
             //MortyEnemy anim
-            MortyEnemy_front[0]=resize(MortyEnemyFLB.crop(14,50,82,111),width,height);
-            MortyEnemy_front[1]=resize(MortyEnemyFLB.crop(139,46,84,115),width,height);
-            MortyEnemy_front[2]=resize(MortyEnemyFLB.crop(274,49,82,112),width,height);
-            MortyEnemy_front[3]=resize(MortyEnemyFLB.crop(409,50,81,112),width,height);
+            MortyEnemy_front[0]=MortyEnemyFLB.crop(14,50,82,111);
+            MortyEnemy_front[1]=MortyEnemyFLB.crop(139,46,84,115);
+            MortyEnemy_front[2]=MortyEnemyFLB.crop(274,49,82,112);
+            MortyEnemy_front[3]=MortyEnemyFLB.crop(409,50,81,112);
 
-            MortyEnemy_left[0]=resize(MortyEnemyFLB.crop(18,216,85,113),width,height);
-            MortyEnemy_left[1]=resize(MortyEnemyFLB.crop(158,216,79,115),width,height);
-            MortyEnemy_left[2]=resize(MortyEnemyFLB.crop(278,216,84,113),width,height);
-            MortyEnemy_left[3]=resize(MortyEnemyFLB.crop(403,216,83,114),width,height);
+            MortyEnemy_left[0]=MortyEnemyFLB.crop(18,216,85,113);
+            MortyEnemy_left[1]=MortyEnemyFLB.crop(158,216,79,115);
+            MortyEnemy_left[2]=MortyEnemyFLB.crop(278,216,84,113);
+            MortyEnemy_left[3]=MortyEnemyFLB.crop(403,216,83,114);
 
-            MortyEnemy_right[0]=resize(MortyEnemyRight.crop(397,24,83,112),width,height);
-            MortyEnemy_right[1]=resize(MortyEnemyRight.crop(262,24,80,114),width,height);
-      		MortyEnemy_right[2]=resize(MortyEnemyRight.crop(136,24,85,112),width,height);
-            MortyEnemy_right[3]=resize(MortyEnemyRight.crop(13,24,84,114),width,height);
+            MortyEnemy_right[0]=MortyEnemyRight.crop(397,24,83,112);
+            MortyEnemy_right[1]=MortyEnemyRight.crop(262,24,80,114);
+      		MortyEnemy_right[2]=MortyEnemyRight.crop(136,24,85,112);
+            MortyEnemy_right[3]=MortyEnemyRight.crop(13,24,84,114);
 
-            MortyEnemy_back[0]=resize(MortyEnemyFLB.crop(23,385,82,111),width,height);
-            MortyEnemy_back[1]=resize(MortyEnemyFLB.crop(155,383,86,114),width,height);
-            MortyEnemy_back[2]=resize(MortyEnemyFLB.crop(281,385,84,111),width,height);
-            MortyEnemy_back[3]=resize(MortyEnemyFLB.crop(405,383,83,112),width,height);
+            MortyEnemy_back[0]=MortyEnemyFLB.crop(23,385,82,111);
+            MortyEnemy_back[1]=MortyEnemyFLB.crop(155,383,86,114);
+            MortyEnemy_back[2]=MortyEnemyFLB.crop(281,385,84,111);
+            MortyEnemy_back[3]=MortyEnemyFLB.crop(405,383,83,112);
 
             //MortyAlly anim
-            MortyAlly_front[0]=resize(MortyAllyFLB.crop(18,37,93,115),width,height);
-            MortyAlly_front[1]=resize(MortyAllyFLB.crop(150,33,91,120),width,height);
-            MortyAlly_front[2]=resize(MortyAllyFLB.crop(277,36,93,116),width,height);
-            MortyAlly_front[3]=resize(MortyAllyFLB.crop(411,35,87,119),width,height);
+            MortyAlly_front[0]=MortyAllyFLB.crop(18,37,93,115);
+            MortyAlly_front[1]=MortyAllyFLB.crop(150,33,91,120);
+            MortyAlly_front[2]=MortyAllyFLB.crop(277,36,93,116);
+            MortyAlly_front[3]=MortyAllyFLB.crop(411,35,87,119);
 
-            MortyAlly_left[0]=resize(MortyAllyFLB.crop(24,204,82,116),width,height);
-            MortyAlly_left[1]=resize(MortyAllyFLB.crop(152,204,82,116),width,height);
-            MortyAlly_left[2]=resize(MortyAllyFLB.crop(282,204,83,116),width,height);
-            MortyAlly_left[3]=resize(MortyAllyFLB.crop(412,204,84,116),width,height);
+            MortyAlly_left[0]=MortyAllyFLB.crop(24,204,82,116);
+            MortyAlly_left[1]=MortyAllyFLB.crop(152,204,82,116);
+            MortyAlly_left[2]=MortyAllyFLB.crop(282,204,83,116);
+            MortyAlly_left[3]=MortyAllyFLB.crop(412,204,84,116);
 
-            MortyAlly_right[0]=resize(MortyAllyRight.crop(8,50,81,116),width,height);
-            MortyAlly_right[1]=resize(MortyAllyRight.crop(138,50,81,115),width,height);
-            MortyAlly_right[2]=resize(MortyAllyRight.crop(268,50,81,116),width,height);
-            MortyAlly_right[3]=resize(MortyAllyRight.crop(398,50,79,115),width,height);
+            MortyAlly_right[3]=MortyAllyRight.crop(8,50,81,116);
+            MortyAlly_right[0]=MortyAllyRight.crop(138,50,81,115);
+            MortyAlly_right[1]=MortyAllyRight.crop(268,50,81,116);
+            MortyAlly_right[2]=MortyAllyRight.crop(398,50,79,115);
 
-            MortyAlly_back[0]=resize(MortyAllyFLB.crop(25,373,84,111),width,height);
-            MortyAlly_back[1]=resize(MortyAllyFLB.crop(155,375,83,111),width,height);
-            MortyAlly_back[2]=resize(MortyAllyFLB.crop(284,373,83,112),width,height);
-            MortyAlly_back[3]=resize(MortyAllyFLB.crop(414,372,81,112),width,height);
+            MortyAlly_back[0]=MortyAllyFLB.crop(25,373,84,111);
+            MortyAlly_back[1]=MortyAllyFLB.crop(155,375,83,111);
+            MortyAlly_back[2]=MortyAllyFLB.crop(284,373,83,112);
+            MortyAlly_back[3]=MortyAllyFLB.crop(414,372,81,112);
 
             
         } catch (IOException e) {
@@ -337,10 +337,6 @@ public class Images {
             System.exit(1);
         }
         return null;
-    }
-    
-    public static BufferedImage resize(BufferedImage img, int newW, int newH) throws IOException {
-    	return Thumbnails.of(img).size(newW,newH).asBufferedImage();
     }
 
 
