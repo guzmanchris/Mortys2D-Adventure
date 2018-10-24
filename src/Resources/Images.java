@@ -128,7 +128,7 @@ public class Images {
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
-            door = ImageIO.read(getClass().getResourceAsStream("/Sheets/Door.png"));
+            door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
