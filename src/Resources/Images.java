@@ -33,11 +33,13 @@ public class Images {
     public static BufferedImage[] MortyAlly_front;
     public static BufferedImage[] MortyAlly_back;
     public static BufferedImage[] butstart;
+    public static BufferedImage[] enterThePortal;
     public static BufferedImage[] particleSmoke;
     public static BufferedImage[] items;
     public static BufferedImage[] numbers;
     public static BufferedImage inventory;
     public static BufferedImage title;
+    public static BufferedImage instructions;
     public static BufferedImage door;
     public static BufferedImage E;
     public static BufferedImage EP;
@@ -100,6 +102,7 @@ public class Images {
         MortyAlly_back = new BufferedImage[4];
 
         butstart = new BufferedImage[3];
+        enterThePortal = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
         items = new BufferedImage[3];
         numbers = new BufferedImage[21];
@@ -128,6 +131,7 @@ public class Images {
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
+            instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/instructionsState.png"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
@@ -189,6 +193,10 @@ public class Images {
             butstart[0]= newsheet.crop(11,422,93,34);//normbut
             butstart[1]= newsheet.crop(11,456,93,33);//hoverbut
             butstart[2]= newsheet.crop(11,489,93,32);//clickbut
+            
+            enterThePortal[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/enterThePortal.png"));
+            enterThePortal[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/enterThePortalH.png"));
+            enterThePortal[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/enterThePortalC.png"));
 
             particleSmoke[0]= newsheet.crop(111,397,18,38);
             particleSmoke[1]= newsheet.crop(129,399,20,35);
