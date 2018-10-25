@@ -3,7 +3,6 @@ package Game.Entities.Creatures;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.Random;
 
 import com.sun.glass.events.KeyEvent;
 

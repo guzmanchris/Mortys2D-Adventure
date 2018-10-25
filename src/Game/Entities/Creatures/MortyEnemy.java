@@ -3,7 +3,17 @@ package Game.Entities.Creatures;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Game.Entities.EntityBase;
 import Game.Inventories.Inventory;
@@ -25,6 +35,18 @@ public class MortyEnemy extends CreatureBase {
     private Random randint;
     private int moveCount=0;
     private int direction;
+    
+    private File audioFile;
+    private AudioInputStream audioStream;
+    private AudioFormat format;
+    private DataLine.Info info;
+    private Clip audioClip;
+    
+    private File audioFile2;
+    private AudioInputStream audioStream2;
+    private AudioFormat format2;
+    private DataLine.Info info2;
+    private Clip audioClip2;
 	
 	public MortyEnemy(Handler handler, float x, float y) {
 		 super(handler, x, y, CreatureBase.DEFAULT_CREATURE_WIDTH, CreatureBase.DEFAULT_CREATURE_HEIGHT);
@@ -48,6 +70,31 @@ public class MortyEnemy extends CreatureBase {
 	     animUp = new Animation(animWalkingSpeed,Images.MortyEnemy_back);
 
 	     Mortyinventory= new Inventory(handler);
+	     
+	     try {
+	            audioFile = new File("res/music/zombieFollow.wav");
+	            audioStream = AudioSystem.getAudioInputStream(audioFile);
+	            format = audioStream.getFormat();
+	            info = new DataLine.Info(Clip.class, format);
+	            audioClip = (Clip) AudioSystem.getLine(info);
+	            audioClip.open(audioStream);
+	            
+	            audioFile2 = new File("res/music/zombieDeath.wav");
+	            audioStream2 = AudioSystem.getAudioInputStream(audioFile2);
+	            format2 = audioStream.getFormat();
+	            info2 = new DataLine.Info(Clip.class, format2);
+	            audioClip2 = (Clip) AudioSystem.getLine(info2);
+	            audioClip2.open(audioStream2);
+
+
+
+	        } catch (UnsupportedAudioFileException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (LineUnavailableException e) {
+	            e.printStackTrace();
+	        }
 	}
 
 	@Override
@@ -94,6 +141,7 @@ public class MortyEnemy extends CreatureBase {
         MortyCam.y = (int) (y - handler.getGameCamera().getyOffset() - (64 * 3));
         MortyCam.width = 64 * 7;
         MortyCam.height = 64 * 7;
+        
 
         if (MortyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset())
                 || MortyCam.contains(handler.getWorld().getEntityManager().getPlayer().getX() - handler.getGameCamera().getxOffset() + handler.getWorld().getEntityManager().getPlayer().getWidth(), handler.getWorld().getEntityManager().getPlayer().getY() - handler.getGameCamera().getyOffset() + handler.getWorld().getEntityManager().getPlayer().getHeight())) {
@@ -103,6 +151,7 @@ public class MortyEnemy extends CreatureBase {
             int arSize = 13;
             ar.width = arSize;
             ar.height = arSize;
+            audioClip.loop(Clip.LOOP_CONTINUOUSLY);
 
             if (lu) {
                 ar.x = cb.x + cb.width / 2 - arSize / 2;
@@ -149,6 +198,7 @@ public class MortyEnemy extends CreatureBase {
             } else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
                 yMove = -speed;
             }
+            
 
 
         } else {
@@ -167,8 +217,8 @@ public class MortyEnemy extends CreatureBase {
                 case 4://right
                     xMove = speed;
                     break;
-
             }
+            audioClip.stop();
         }
     }
 
@@ -184,6 +234,8 @@ public class MortyEnemy extends CreatureBase {
 
 	@Override
 	public void die() {
+		audioClip2.start();
+		audioClip.close();
 		handler.getWorld().getItemManager().addItem(Item.wizardItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
 	}
