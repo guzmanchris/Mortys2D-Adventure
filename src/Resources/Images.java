@@ -43,6 +43,8 @@ public class Images {
     public static BufferedImage door;
     public static BufferedImage coinBlock;
     public static BufferedImage healItem;
+    public static BufferedImage kalaxianCrystal;
+    public static BufferedImage kalaxianCrystalBlock;
     public static BufferedImage E;
     public static BufferedImage EP;
     public static BufferedImage Pause;
@@ -128,6 +130,11 @@ public class Images {
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
             keyItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/keyItem.png"));
             coinItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinItem.png"));
+            coinBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinBlock.png"));
+            healItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/Heal_Icon.png"));
+            kalaxianCrystal = ImageIO.read(getClass().getResourceAsStream("/Sheets/KalaxianCrystal2.png"));
+            kalaxianCrystalBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/kalaxianCrystalBlock.png"));
+            coinItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinItem.png"));
             wizardHumanoid = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardHumanoid.png"));
             wizardItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardItem.png"));
 
@@ -135,8 +142,6 @@ public class Images {
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
             instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/instructionsState.png"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
-            coinBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinBlock.png"));
-            healItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/Heal_Icon.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
