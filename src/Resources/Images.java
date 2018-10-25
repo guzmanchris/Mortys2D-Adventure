@@ -41,6 +41,7 @@ public class Images {
     public static BufferedImage title;
     public static BufferedImage instructions;
     public static BufferedImage door;
+    public static BufferedImage coinBlock;
     public static BufferedImage E;
     public static BufferedImage EP;
     public static BufferedImage Pause;
@@ -133,6 +134,7 @@ public class Images {
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
             instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/instructionsState.png"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
+            coinBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinBlock.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
             Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
