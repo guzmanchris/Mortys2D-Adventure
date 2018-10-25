@@ -9,6 +9,7 @@ import javax.sound.sampled.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by Elemental on 1/1/2017.
@@ -19,6 +20,8 @@ public class Tree extends StaticEntity {
     private AudioFormat format;
     private DataLine.Info info;
     private Clip audioClip;
+    private Random randint;
+    private int RNGR;
 
     public Tree(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEHEIGHT * 2, Tile.TILEWIDTH);
@@ -74,7 +77,12 @@ public class Tree extends StaticEntity {
 
     @Override
     public void die() {
+    	randint=new Random();
+    	RNGR=randint.nextInt(1) + 1;
         handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+        /*if(RNGR==1){
+            handler.getWorld().getItemManager().addItem(Item.healItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
+        }*/
 
 
     }

@@ -34,7 +34,7 @@ public class Item {
     public static Item coinItem = new Item(Images.coinItem, "Coin", 3);
     public static Item keyItem = new Item(Images.keyItem, "Key", 4);
     public static Item wizardItem = new Item(Images.wizardItem, "Wizard", 5);
-    public static Item healItem = new Item(Images.wizardItem, "Wizard", 6);
+    public static Item healItem = new Item(Images.healItem, "Heal", 6);
     
 
 
