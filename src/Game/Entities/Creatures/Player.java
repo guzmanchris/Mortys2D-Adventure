@@ -89,6 +89,13 @@ public class Player extends CreatureBase {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)) {
         	health = 75;
         }
+        
+        for(Item i : inventory.getInventoryItems()){
+        	if(i.getName() == "Heal"){
+        		health = 75;
+        		i.setCount(i.getCount()-1);
+        	}
+        }
 
 
         //Movement
