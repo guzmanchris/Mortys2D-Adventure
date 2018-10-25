@@ -3,6 +3,16 @@ package Game.Entities.Creatures;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import com.sun.glass.events.KeyEvent;
 
@@ -12,6 +22,7 @@ import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
+
 
 public class MortyAlly extends CreatureBase {
 
@@ -28,6 +39,13 @@ public class MortyAlly extends CreatureBase {
     private int ticks=0;
     
     private String spawnPosition;
+    private boolean justSpawned;
+    
+    private File audioFile;
+    private AudioInputStream audioStream;
+    private AudioFormat format;
+    private DataLine.Info info;
+    private Clip audioClip;
 
 	
 	public MortyAlly(Handler handler, float x, float y) {
@@ -39,6 +57,7 @@ public class MortyAlly extends CreatureBase {
 	     speed=DEFAULT_SPEED;
 	     health=100;
 	     visible=false;
+	     justSpawned = false;
 	     
 	     MortyCam= new Rectangle();
 
@@ -48,6 +67,23 @@ public class MortyAlly extends CreatureBase {
 	     animUp = new Animation(animWalkingSpeed,Images.MortyAlly_back);
 
 	     Mortyinventory= new Inventory(handler);
+	     
+	     try {
+	            audioFile = new File("res/music/SendMortyOut.wav");
+	            audioStream = AudioSystem.getAudioInputStream(audioFile);
+	            format = audioStream.getFormat();
+	            info = new DataLine.Info(Clip.class, format);
+	            audioClip = (Clip) AudioSystem.getLine(info);
+	            audioClip.open(audioStream);
+
+
+	        } catch (UnsupportedAudioFileException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (LineUnavailableException e) {
+	            e.printStackTrace();
+	        }
 	}
 
 	@Override
@@ -69,6 +105,13 @@ public class MortyAlly extends CreatureBase {
 	        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_Z) && ticks>10){
 	        	attackMode = !attackMode;
 	        	ticks = 0;
+	        }
+	        
+	        //Restart clip
+	        if(justSpawned && ticks>125) {
+	        	audioClip.setFramePosition(0);
+	        	audioClip.stop();
+	        	justSpawned = false;
 	        }
 	        
 		    checkIfMove();
@@ -208,6 +251,9 @@ public class MortyAlly extends CreatureBase {
 	}
 	
 	public void spawn() {
+		audioClip.start();
+		justSpawned = true;
+		ticks=0;
 		if(handler.getWorld().getEntityManager().getPlayer().getY()-60>64) {
 			x=handler.getWorld().getEntityManager().getPlayer().getX();
 			y=handler.getWorld().getEntityManager().getPlayer().getY()-60;
@@ -218,6 +264,7 @@ public class MortyAlly extends CreatureBase {
 			y=handler.getWorld().getEntityManager().getPlayer().getY()+60;
 			spawnPosition = "Down";
 		}
+		
 	}
 
 	
