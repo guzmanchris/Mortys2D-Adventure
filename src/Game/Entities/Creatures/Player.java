@@ -97,6 +97,12 @@ public class Player extends CreatureBase {
         		i.setCount(i.getCount()-1);
         		}        	
         	}
+        	if(i.getName() == "Attack"){
+        		if(i.getCount()>0 && handler.getKeyManager().keyJustPressed(KeyEvent.VK_T)){
+        		attack+=2;
+        		i.setCount(i.getCount()-1);
+        		}
+        	}
         }
 
 

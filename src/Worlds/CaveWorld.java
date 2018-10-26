@@ -4,6 +4,7 @@ import Game.Entities.Creatures.MortyEnemy;
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.Door;
+import Game.Entities.Statics.GuardMorty;
 import Main.Handler;
 
 /**
@@ -22,8 +23,10 @@ public class CaveWorld extends BaseWorld{
         
         entityManager.addEntity(new MortyEnemy(handler, 100, 800));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
+        entityManager.addEntity(new SkelyEnemy(handler, 1000, 500));
         entityManager.addEntity(new MortyAlly(handler,0,0));
         entityManager.addEntity(new Door(handler, 100, 0,world2));
+        entityManager.addEntity(new GuardMorty(handler, 250, 10, world2));
         
 
     }
