@@ -91,7 +91,7 @@ public class Player extends CreatureBase {
         }
         
         for(Item i : inventory.getInventoryItems()){
-        	if(i.getName() == "Heal"){
+        	if(i.getName() == "Heal" && i.getCount()>0){
         		health = 75;
         		i.setCount(i.getCount()-1);
         	}
