@@ -80,7 +80,7 @@ public class CoinBlock extends StaticEntity {
         randint=new Random();
         RNGR=randint.nextInt(1) + 1;
         System.out.println(RNGR);
-        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
+        handler.getWorld().getItemManager().addItem(Item.coinItem.createNew((int)x + bounds.x,(int)y + bounds.y,(randint.nextInt(3) +1)));
         /*if(RNGR==1){
             handler.getWorld().getItemManager().addItem(Item.fireRuneItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
         }*/
