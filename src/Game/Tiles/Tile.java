@@ -27,13 +27,13 @@ public class Tile {
     public static Tile topwallTile = new BorderTile(Images.blocks[10],10);
     public static Tile lowerwallTile = new BorderTile(Images.blocks[11],11);
 
-    /*public static Tile[] tiles2 = new Tile[256];
-    public static Tile grass2Tile = new GrassTile2(1);
-    public static Tile sandTile = new SandTile(2);
-    public static Tile dirt2Tile = new DirtTile2(3);
-    public static Tile stoneWallTile = new BorderTile(Images.blocks2[0],4);
-    public static Tile brickWallTile = new BorderTile(Images.blocks2[4],5);
-    public static Tile brickFloorTile = new BrickTile(6);*/
+    public static Tile[] tiles2 = new Tile[256];
+    public static Tile grass2Tile = new GrassTile2(13);
+    public static Tile sandTile = new SandTile(14);
+    public static Tile dirt2Tile = new DirtTile2(15);
+    public static Tile stoneWallTile = new BorderTile(Images.blocks2[0],16);
+    public static Tile brickWallTile = new BorderTile(Images.blocks2[4],17);
+    public static Tile brickFloorTile = new BrickTile(18);
 
     //CLASS
 
