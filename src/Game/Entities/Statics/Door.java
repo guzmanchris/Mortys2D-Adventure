@@ -5,6 +5,7 @@ import Game.GameStates.State;
 import Main.Handler;
 import Resources.Images;
 import Worlds.BaseWorld;
+import Worlds.World2;
 
 import java.awt.*;
 import java.io.File;
@@ -114,6 +115,10 @@ public class Door extends StaticEntity {
 		if(ir.contains(pr) && !EP){
 			g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
 		}else if(ir.contains(pr) && EP  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
+//			if(handler.getWorld() instanceof World2 && finalQuestComplete) {
+//				State.setState(handler.getGame().gameWonState);
+//			}
+			
 			g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
 			g.drawImage(Images.loading,0,0,800,600,null);
 			handler.setWorld(world);

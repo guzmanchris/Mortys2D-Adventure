@@ -52,9 +52,6 @@ public class BaseWorld {
 			countP=0;
 			State.setState(handler.getGame().pauseState);
 		}
-		if(handler.getWorld().getEntityManager().getPlayer().getHealth()<=0){
-			State.setState(handler.getGame().gameOverState);
-		}
 	}
 
 	public void render(Graphics g){

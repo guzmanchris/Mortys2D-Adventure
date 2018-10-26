@@ -68,7 +68,10 @@ public class Images {
     public static BufferedImage spellGUI;
     public static BufferedImage keyItem;
     public static BufferedImage coinItem;
+    public static BufferedImage attackItem;
+    public static BufferedImage Crate;
     public static BufferedImage wizardHumanoid;
+    public static BufferedImage GuardMorty;
     public static BufferedImage wizardItem;
     public static BufferedImage[] wizardInstructions;
 
@@ -142,12 +145,15 @@ public class Images {
             spellGUI = ImageIO.read(getClass().getResourceAsStream("/Sheets/SpellGUI.png"));
             keyItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/keyItem.png"));
             coinItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinItem.png"));
+            attackItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/attackItem.png"));
             coinBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinBlock.png"));
+            Crate = ImageIO.read(getClass().getResourceAsStream("/Sheets/Crate.png"));
             healItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/Heal_Icon.png"));
             kalaxianCrystal = ImageIO.read(getClass().getResourceAsStream("/Sheets/KalaxianCrystal2.png"));
             kalaxianCrystalBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/kalaxianCrystalBlock.png"));
             coinItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinItem.png"));
             wizardHumanoid = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardHumanoid.png"));
+            GuardMorty = ImageIO.read(getClass().getResourceAsStream("/Sheets/GuardMorty.png"));
             wizardItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardItem.png"));
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));

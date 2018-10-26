@@ -26,7 +26,7 @@ public class Item {
     //handler
 
     public static Item[] items = new Item[256];
-    public static int totalItems = 8;
+    public static int totalItems = 9;
 
     public static Item woodItem = new Item(Images.items[0],"Wood",0);
     public static Item rockItem = new Item(Images.blocks[14],"Rock",1);
@@ -36,7 +36,7 @@ public class Item {
     public static Item wizardItem = new Item(Images.wizardItem, "Wizard", 5);
     public static Item healItem = new Item(Images.healItem, "Heal", 6);
     public static Item kalaxianCrystal = new Item(Images.kalaxianCrystal, "Kalaxian Crystal", 7);
-    
+    public static Item attackItem = new Item(Images.attackItem, "Attack", 8);
 
 
     //class
