@@ -261,10 +261,12 @@ public class Images {
             blocks[13] = newsheet.crop(176,0,Bwidth,Bheight*2);//tree
             blocks[14] = newsheet.crop(174,410,78,74);//rock
             
-            /*blocks2[0] = newworldsheet.crop(0,0,64,64);//wall
-            blocks2[1] = newworldsheet.crop(0,64,64,128);//sand
-            blocks2[2] = newworldsheet.crop(0,128,64,192);//grass
-            blocks2[3] = newworldsheet.crop(0,192,64,256);//dirt*/
+            blocks2[0] = newworldsheet.crop(0,0,64,64);//stonewall
+            blocks2[1] = newworldsheet.crop(0,64,64,64);//sand
+            blocks2[2] = newworldsheet.crop(0,128,64,64);//grass
+            blocks2[3] = newworldsheet.crop(0,192,64,64);//dirt
+            blocks2[4] = newworldsheet.crop(0,256,64,64);//brickwall
+            blocks2[5] = newworldsheet.crop(128,256,64,64);//brickwall 2
 
 
             //player anim
