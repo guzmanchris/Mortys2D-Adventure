@@ -23,29 +23,22 @@ public class GameOverState extends State {
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUimanager(uiManager);
         
-        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, (handler.getHeight()/2-32)-75, 128, 64, Images.BTitle, () -> {
+        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-70, 100, 140, 32, Images.PlayAgain, () -> {
+            handler.getMouseManager().setUimanager(null);
+            State.setState(handler.getGame().instructionsState);
+        }));
+        
+        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-70, 100+32+16, 140, 32, Images.ReturntoMenu, () -> {
             handler.getMouseManager().setUimanager(null);
             State.setState(handler.getGame().menuState);
         }));
 
-        /*uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2-32, 128, 64, Images.butstart, new ClickListlener() {
-            @Override
-            public void onClick() {
-            	handler.getMouseManager().setUimanager(null);
-                State.setState(handler.getGame().instructionsState);
-            }
-        }));*/
     }
 
     @Override
     public void tick() {
         handler.getMouseManager().setUimanager(uiManager);
         uiManager.tick();
-        
-
-        // Temporarily just go directly to the GameState, skip the menu state!
-        //handler.getMouseManager().setUimanager(null);
-        //State.setState(handler.getGame().gameState);
     }
 
     @Override

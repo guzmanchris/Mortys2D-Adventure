@@ -38,7 +38,6 @@ public class MortyAlly extends CreatureBase {
     
     private int ticks=0;
     
-    private String spawnPosition;
     private boolean justSpawned;
     
     private File audioFile;
@@ -55,7 +54,7 @@ public class MortyAlly extends CreatureBase {
 	     bounds.width=16*2;
 	     bounds.height=14*2;
 	     speed=DEFAULT_SPEED;
-	     health=100;
+	     health=200;
 	     visible=false;
 	     justSpawned = false;
 	     
@@ -211,7 +210,7 @@ public class MortyAlly extends CreatureBase {
 			
 		else {
 				 float deltaY;
-			     if (x >= handler.getWorld().getEntityManager().getPlayer().getX()-3 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 3) {//dont move
+			     if (x >= handler.getWorld().getEntityManager().getPlayer().getX()-40 && x <= handler.getWorld().getEntityManager().getPlayer().getX() + 40) {//dont move
 			            xMove = 0;
 			        }
 					else if(x>handler.getWorld().getEntityManager().getPlayer().getX()) {//move Left
@@ -221,31 +220,15 @@ public class MortyAlly extends CreatureBase {
 						xMove = speed;
 					}
 				 
-					if ((y >= handler.getWorld().getEntityManager().getPlayer().getY()+60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()+60+3) || (y >= handler.getWorld().getEntityManager().getPlayer().getY()-60-3 && y <= handler.getWorld().getEntityManager().getPlayer().getY()-60+3)) {//dont move
+					if ((y >= handler.getWorld().getEntityManager().getPlayer().getY()-40 && y <= handler.getWorld().getEntityManager().getPlayer().getY()+40)) {//dont move
 			            yMove = 0;
 			            }
-					else switch(spawnPosition) {
-					case("Up") :
-						deltaY =handler.getWorld().getEntityManager().getPlayer().getY() - y;
-						if(deltaY<60) {//move up
-							yMove=-speed;
-							}
-						else if(deltaY>60) {//move down
-							yMove=speed;
-							}
-						break;
-						
-					case("Down") :
-						deltaY = y - handler.getWorld().getEntityManager().getPlayer().getY();
-					if(deltaY>60) {//move up
-						yMove=-speed;
-						}
-					else if(deltaY<60) {//move down
-						yMove=speed;
-						}
-					break;
-					
-					}	
+					else if (y < handler.getWorld().getEntityManager().getPlayer().getY()) {//move down
+		                yMove = speed;
+
+		            } else if (y > handler.getWorld().getEntityManager().getPlayer().getY()) {//move up
+		                yMove = -speed;
+		            }	
 			}
 			
 	}
@@ -257,12 +240,10 @@ public class MortyAlly extends CreatureBase {
 		if(handler.getWorld().getEntityManager().getPlayer().getY()-60>64) {
 			x=handler.getWorld().getEntityManager().getPlayer().getX();
 			y=handler.getWorld().getEntityManager().getPlayer().getY()-60;
-			spawnPosition = "Up";
 		}
 		else {
 			x=handler.getWorld().getEntityManager().getPlayer().getX();
 			y=handler.getWorld().getEntityManager().getPlayer().getY()+60;
-			spawnPosition = "Down";
 		}
 		
 	}
