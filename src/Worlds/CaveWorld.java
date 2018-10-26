@@ -18,8 +18,8 @@ public class CaveWorld extends BaseWorld{
         this.handler = handler;
         this.player=player;
         
-        entityManager.addEntity(new MortyEnemy(handler, 1250, 500));
-        entityManager.addEntity(new SkelyEnemy(handler, 100, 800));
+        entityManager.addEntity(new MortyEnemy(handler, 100, 800));
+        entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
         entityManager.addEntity(new MortyAlly(handler,0,0));
 
     }

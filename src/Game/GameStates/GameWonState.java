@@ -24,7 +24,15 @@ public class GameWonState extends State {
         handler.getMouseManager().setUimanager(uiManager);
 
 
-        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2-32, 128, 64, Images.butstart, new ClickListlener() {
+        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-70, handler.getHeight()/2-16, 140, 32, Images.ReturntoMenu, new ClickListlener() {
+            @Override
+            public void onClick() {
+            	handler.getMouseManager().setUimanager(null);
+                State.setState(handler.getGame().menuState);
+            }
+        }));
+        
+        uiManager.addObjects(new UIImageButton(handler.getWidth()/2-70, handler.getHeight()/2-16+32+16, 140, 32, Images.PlayAgain, new ClickListlener() {
             @Override
             public void onClick() {
             	handler.getMouseManager().setUimanager(null);
@@ -37,10 +45,6 @@ public class GameWonState extends State {
     public void tick() {
         handler.getMouseManager().setUimanager(uiManager);
         uiManager.tick();
-
-        // Temporarily just go directly to the GameState, skip the menu state!
-        //handler.getMouseManager().setUimanager(null);
-        //State.setState(handler.getGame().gameState);
     }
 
     @Override

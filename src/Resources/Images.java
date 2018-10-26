@@ -51,9 +51,12 @@ public class Images {
     public static BufferedImage E;
     public static BufferedImage EP;
     public static BufferedImage Pause;
+    public static BufferedImage[] BeginAdventure;
     public static BufferedImage[] Resume;
-    public static BufferedImage[] BTitle;
-    public static BufferedImage[] Options;
+    public static BufferedImage[] ReturntoMenu;
+    public static BufferedImage[] Controls;
+    public static BufferedImage[] Restart;
+    public static BufferedImage[] PlayAgain;
     public static BufferedImage[] Runes;
     public static ImageIcon icon;
     public static BufferedImage[] FireBallLeft;
@@ -111,13 +114,16 @@ public class Images {
         MortyAlly_back = new BufferedImage[4];
 
         butstart = new BufferedImage[3];
+        BeginAdventure = new BufferedImage[3];
         enterThePortal = new BufferedImage[3];
         particleSmoke = new BufferedImage[3];
         items = new BufferedImage[3];
         numbers = new BufferedImage[21];
-        Resume = new BufferedImage[2];
-        BTitle = new BufferedImage[2];
-        Options = new BufferedImage[2];
+        Resume = new BufferedImage[3];
+        ReturntoMenu = new BufferedImage[3];
+        Controls = new BufferedImage[3];
+        Restart = new BufferedImage[3];
+        PlayAgain = new BufferedImage[3];
         Runes = new BufferedImage[36];
 
         FireBallLeft = new BufferedImage[6];
@@ -151,13 +157,26 @@ public class Images {
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
-            Pause = ImageIO.read(getClass().getResourceAsStream("/Buttons/Pause.png"));
+            BeginAdventure[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BeginAdventure.png"));
+            BeginAdventure[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BeginAdventureH.png"));
+            BeginAdventure[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BeginAdventureC.png"));
+            Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/pauseMenu.png"));
             Resume[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Resume.png"));
-            Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeP.png"));
-            BTitle[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitle.png"));
-            BTitle[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/BTitleP.png"));
-            Options[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Options.png"));
-            Options[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/OptionsP.png"));
+            Resume[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeH.png"));
+            Resume[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ResumeC.png"));
+            ReturntoMenu[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ReturntoMenu.png"));
+            ReturntoMenu[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ReturntoMenuH.png"));
+            ReturntoMenu[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ReturntoMenuC.png"));
+            Controls[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Controls.png"));
+            Controls[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ControlsH.png"));
+            Controls[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/ControlsC.png"));
+            Restart[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/Restart.png"));
+            Restart[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/RestartH.png"));
+            Restart[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/RestartC.png"));
+            PlayAgain[0] = ImageIO.read(getClass().getResourceAsStream("/Buttons/PlayAgain.png"));
+            PlayAgain[1] = ImageIO.read(getClass().getResourceAsStream("/Buttons/PlayAgainH.png"));
+            PlayAgain[2] = ImageIO.read(getClass().getResourceAsStream("/Buttons/PlayAgainC.png"));
+            
 
             //icon
             icon = new ImageIcon(runesheet.crop(Rwidth*1,Rheight*0,Rwidth,Rheight));
