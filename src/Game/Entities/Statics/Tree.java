@@ -80,9 +80,9 @@ public class Tree extends StaticEntity {
     	randint=new Random();
     	RNGR=randint.nextInt(1) + 1;
         handler.getWorld().getItemManager().addItem(Item.woodItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
-        /*if(RNGR==1){
+        if(RNGR==1){
             handler.getWorld().getItemManager().addItem(Item.healItem.createNew((int)x + bounds.x + (randint.nextInt(32) -32),(int)y + bounds.y+(randint.nextInt(32) -32),(randint.nextInt(3) +1)));
-        }*/
+        }
 
 
     }

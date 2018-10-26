@@ -1,6 +1,8 @@
 package Main;
 
+import Game.GameStates.GameOverState;
 import Game.GameStates.GameState;
+import Game.GameStates.GameWonState;
 import Game.GameStates.InstructionsState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
@@ -39,6 +41,8 @@ public class Game implements Runnable {
     public State menuState;
     public State pauseState;
     public State instructionsState;
+    public State gameOverState;
+    public State gameWonState;
 
 
     //Input
@@ -93,6 +97,9 @@ public class Game implements Runnable {
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
         instructionsState = new InstructionsState(handler);
+        gameOverState = new GameOverState(handler);
+        gameWonState = new GameWonState(handler);
+        
 
         State.setState(menuState);
 

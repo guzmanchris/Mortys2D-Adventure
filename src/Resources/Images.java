@@ -16,6 +16,7 @@ public class Images {
     private static final int Fwidth = 512, Fheight = 197;
 
     public static BufferedImage[] blocks;
+    public static BufferedImage[] blocks2;
     public static BufferedImage[] player_right;
     public static BufferedImage[] player_left;
     public static BufferedImage[] player_front;
@@ -40,6 +41,8 @@ public class Images {
     public static BufferedImage inventory;
     public static BufferedImage title;
     public static BufferedImage instructions;
+    public static BufferedImage gameOver;
+    public static BufferedImage gameWon;
     public static BufferedImage door;
     public static BufferedImage coinBlock;
     public static BufferedImage healItem;
@@ -69,6 +72,7 @@ public class Images {
     public Images() {
 
         SpriteSheet newsheet = new SpriteSheet(Images.loadImage("/Sheets/SpriteSheet.png"));
+        SpriteSheet newworldsheet = new SpriteSheet (Images.loadImage("/Sheets/master-tileset.png"));
         SpriteSheet numsheet = new SpriteSheet(Images.loadImage("/Sheets/numsheet.png"));
         SpriteSheet runesheet = new SpriteSheet(Images.loadImage("/Sheets/runes.png"));
         SpriteSheet FireBallsheet = new SpriteSheet(Images.loadImage("/Sheets/FireBall.png"));
@@ -84,6 +88,7 @@ public class Images {
 
 
         blocks = new BufferedImage[15];
+        blocks2 = new BufferedImage[15];
 
         player_left = new BufferedImage[4];
         player_right = new BufferedImage[4];
@@ -141,6 +146,8 @@ public class Images {
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
             instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/instructionsState.png"));
+            gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/youAreDead.jpg"));
+            //gameWon = ImageIO.read(getClass().getResourceAsStream("Sheets/youAreDead.png"));//TODO
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
@@ -253,6 +260,11 @@ public class Images {
             blocks[12] = newsheet.crop(0,260,Bwidth,Bheight);//mossyrock
             blocks[13] = newsheet.crop(176,0,Bwidth,Bheight*2);//tree
             blocks[14] = newsheet.crop(174,410,78,74);//rock
+            
+            /*blocks2[0] = newworldsheet.crop(0,0,64,64);//wall
+            blocks2[1] = newworldsheet.crop(0,64,64,128);//sand
+            blocks2[2] = newworldsheet.crop(0,128,64,192);//grass
+            blocks2[3] = newworldsheet.crop(0,192,64,256);//dirt*/
 
 
             //player anim
