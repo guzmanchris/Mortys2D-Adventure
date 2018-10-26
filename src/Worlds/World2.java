@@ -31,6 +31,7 @@ public class World2 extends BaseWorld{
         entityManager.addEntity(new Tree(handler, 1250, base*28));
         entityManager.addEntity(new Tree(handler, 1240, base*30));        
         entityManager.addEntity(new Tree(handler, 1230, base*32));
+        entityManager.addEntity(new Crate(handler, 1500, base*22));
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new WizardHumanoid(handler, 250, 0,caveWorld));
 
