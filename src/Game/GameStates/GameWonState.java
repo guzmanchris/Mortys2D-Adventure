@@ -28,7 +28,7 @@ public class GameWonState extends State {
             @Override
             public void onClick() {
             	handler.getMouseManager().setUimanager(null);
-                State.setState(handler.getGame().instructionsState);
+                State.setState(handler.getGame().gameWonState);
             }
         }));
     }

@@ -147,7 +147,7 @@ public class Images {
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
             instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/instructionsState.png"));
             gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/youAreDead.jpg"));
-            //gameWon = ImageIO.read(getClass().getResourceAsStream("Sheets/youAreDead.png"));//TODO
+            gameWon = ImageIO.read(getClass().getResourceAsStream("/Sheets/gameWon.jpg"));//TODO
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
             E = ImageIO.read(getClass().getResourceAsStream("/Buttons/E.png"));
             EP = ImageIO.read(getClass().getResourceAsStream("/Buttons/EP.png"));
@@ -266,7 +266,7 @@ public class Images {
             blocks2[2] = newworldsheet.crop(0,128,64,64);//grass
             blocks2[3] = newworldsheet.crop(0,192,64,64);//dirt
             blocks2[4] = newworldsheet.crop(0,256,64,64);//brickwall
-            blocks2[5] = newworldsheet.crop(128,256,64,64);//brickwall 2
+            blocks2[5] = newworldsheet.crop(128,256,64,64);//brickfloor
 
 
             //player anim
