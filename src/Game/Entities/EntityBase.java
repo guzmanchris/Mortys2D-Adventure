@@ -132,5 +132,13 @@ public abstract class EntityBase {
         this.active = active;
     }
 
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
 
 }

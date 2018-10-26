@@ -7,6 +7,16 @@ import Resources.Images;
 import Worlds.BaseWorld;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import com.sun.glass.events.KeyEvent;
 
@@ -21,6 +31,12 @@ public class Door extends StaticEntity {
 	public Boolean EP = false;
 
 	private BaseWorld world;
+	
+	 private File audioFile;
+	 private AudioInputStream audioStream;
+	 private AudioFormat format;
+	 private DataLine.Info info;
+	 private Clip portalOpen;
 
 	public Door(Handler handler, float x, float y,BaseWorld world) {
 		super(handler, x, y, 64, 100);
@@ -38,12 +54,31 @@ public class Door extends StaticEntity {
 		int iry= (int)(bounds.y-handler.getGameCamera().getyOffset()+height);
 		ir.y=iry;
 		ir.x=irx;
+		
+		 try {
+	            audioFile = new File("res/music/PortalOpen.wav");
+	            audioStream = AudioSystem.getAudioInputStream(audioFile);
+	            format = audioStream.getFormat();
+	            info = new DataLine.Info(Clip.class, format);
+	            portalOpen = (Clip) AudioSystem.getLine(info);
+	            portalOpen.open(audioStream);
+
+
+
+	        } catch (UnsupportedAudioFileException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (LineUnavailableException e) {
+	            e.printStackTrace();
+	        }
+
 	}
 
 	@Override
 	public void tick() {
 		if (visible==true){
-
+			portalOpen.start();
 			if(isBeinghurt()){
 				setHealth(10000000);
 			}
@@ -55,7 +90,11 @@ public class Door extends StaticEntity {
 				EP=false;
 			}
 		}
-		else;
+		else {
+			if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)) {
+				handler.setWorld(world);
+			}
+		}
 
 	}
 
@@ -66,7 +105,7 @@ public class Door extends StaticEntity {
 
 			g.setColor(Color.black);
 			checkForPlayer(g, handler.getWorld().getEntityManager().getPlayer());
-		}else;
+		}
 	}
 
 	private void checkForPlayer(Graphics g, Player p) {

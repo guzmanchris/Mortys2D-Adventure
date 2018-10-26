@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityBase;
 import Game.Entities.Creatures.Player;
 import Game.Items.Item;
 import Main.Handler;
@@ -93,7 +94,11 @@ public class WizardHumanoid extends StaticEntity {
 	            }
         		}
 	        	else {
-	        		//TODO make door visible
+	        		for(EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+	        			if(e instanceof Door) {
+	        				e.setVisible(true);
+	        			}
+	        		}
 	        		g.drawImage(Images.wizardInstructions[1],(int) x+width,(int) y, null);
 	        	}
         }
