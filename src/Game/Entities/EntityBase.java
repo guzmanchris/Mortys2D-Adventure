@@ -50,12 +50,12 @@ public abstract class EntityBase {
         }
     }
     public void renderLife(Graphics g) {
-        if (beinghurt && count <=8){
+        if (beinghurt && count <=8 && getHealth()>=0){
             if(count == 8){
                 count = 0;
                 beinghurt=false;
             }
-
+            
             g.drawImage(Images.numbers[getHealth()],(int)(x-handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()-getHeight()+(bounds.height/3)),42,42,null);
             count++;
 
