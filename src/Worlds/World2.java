@@ -12,24 +12,26 @@ public class World2 extends BaseWorld{
 
     private Handler handler;
     private BaseWorld caveWorld;
-
+    int base = 32;
+    
     public World2(Handler handler, String path, Player player){
         super(handler,path,player);
         this.handler = handler;
+        
+        
 
-        entityManager.addEntity(new Tree(handler, 100, 250));
-        entityManager.addEntity(new Rock(handler, 100, 450));
-        entityManager.addEntity(new Tree(handler, 533, 276));
-        entityManager.addEntity(new Rock(handler, 684, 1370));
-        entityManager.addEntity(new Tree(handler, 765, 888));
-        entityManager.addEntity(new Rock(handler, 88, 1345));
-        entityManager.addEntity(new Tree(handler, 77, 700));
-        entityManager.addEntity(new Rock(handler, 700, 83));
-        entityManager.addEntity(new CoinBlock(handler, 800, 1320));
-        entityManager.addEntity(new CoinBlock(handler, 1400, 200));
-        entityManager.addEntity(new CoinBlock(handler, 320, 858));
+        entityManager.addEntity(new Tree(handler, 1330, base*12));        
+        entityManager.addEntity(new Tree(handler, 1320, base*14));
+        entityManager.addEntity(new Tree(handler, 1310, base*16));
+        entityManager.addEntity(new Tree(handler, 1300, base*18));
+        entityManager.addEntity(new Tree(handler, 1290, base*20));
+        entityManager.addEntity(new Tree(handler, 1280, base*22));
+        entityManager.addEntity(new Tree(handler, 1270, base*24));
+        entityManager.addEntity(new Tree(handler, 1260, base*26));        
+        entityManager.addEntity(new Tree(handler, 1250, base*28));
+        entityManager.addEntity(new Tree(handler, 1240, base*30));        
+        entityManager.addEntity(new Tree(handler, 1230, base*32));
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
-        entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
         entityManager.addEntity(new WizardHumanoid(handler, 250, 0,caveWorld));
 
         entityManager.getPlayer().setX(spawnX);
