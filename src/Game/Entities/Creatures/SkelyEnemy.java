@@ -124,7 +124,7 @@ public class SkelyEnemy extends CreatureBase  {
             for (EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
                 if (e.equals(this))
                     continue;
-                if (e.getCollisionBounds(0, 0).intersects(ar) && e.equals(handler.getWorld().getEntityManager().getPlayer())) {
+                if (e.getCollisionBounds(0, 0).intersects(ar) && (e.equals(handler.getWorld().getEntityManager().getPlayer()) ||  e instanceof MortyAlly)) {
 
                     checkAttacks();
                     return;
