@@ -36,7 +36,7 @@ public class MenuState extends State {
             @Override
             public void onClick() {
             	handler.getMouseManager().setUimanager(null);
-                //State.setState(handler.getGame().controlState);
+                State.setState(handler.getGame().controlsState);
             }
         }));
     }
@@ -46,9 +46,6 @@ public class MenuState extends State {
         handler.getMouseManager().setUimanager(uiManager);
         uiManager.tick();
 
-        // Temporarily just go directly to the GameState, skip the menu state!
-        //handler.getMouseManager().setUimanager(null);
-        //State.setState(handler.getGame().gameState);
     }
 
     @Override
