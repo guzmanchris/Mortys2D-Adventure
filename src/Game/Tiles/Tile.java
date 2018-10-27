@@ -34,6 +34,7 @@ public class Tile {
     public static Tile stoneWallTile = new BorderTile(Images.blocks2[0],16);
     public static Tile brickWallTile = new BorderTile(Images.blocks2[4],17);
     public static Tile brickFloorTile = new BrickTile(18);
+    public static Tile holeTile = new RockTile (Images.blocks2[6], 18);
 
     //CLASS
 
