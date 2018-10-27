@@ -51,7 +51,7 @@ public class GameWonState extends State {
     public void render(Graphics g) {
         g.setColor(Color.darkGray);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
-        g.drawImage(Images.title,0,0,800,600,null);
+        g.drawImage(Images.gameWon,0,0,800,600,null);
         uiManager.Render(g);
 
     }
