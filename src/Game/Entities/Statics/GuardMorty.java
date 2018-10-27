@@ -70,7 +70,7 @@ public class GuardMorty extends StaticEntity {
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
         }else if(ir.contains(pr)){
         	if(keys>0 || coins>0) {
-	        	g.drawImage(Images.injuredMortyMessages[0],(int) x+width,(int) y, null);
+	        	g.drawImage(Images.wizardInstructions[0],(int) x+width,(int) y, null);
 	            
 	            //Draw Items Required
 	            g.drawImage(Images.keyItem,(int) x+width+8,(int) y+50-16, 32, 32, null);
@@ -96,7 +96,7 @@ public class GuardMorty extends StaticEntity {
 	        				e.setVisible(true);
 	        			}
 	        		}
-	        		g.drawImage(Images.injuredMortyMessages[1],(int) x+width,(int) y, null);
+	        		g.drawImage(Images.wizardInstructions[1],(int) x+width,(int) y, null);
 	        	}
         }
 
