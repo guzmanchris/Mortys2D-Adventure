@@ -1,6 +1,7 @@
 package Worlds;
 
 import Game.Entities.Creatures.MortyEnemy2;
+import Game.Entities.Creatures.MortyAlly; 
 import Game.Entities.Creatures.Player;
 import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Creatures.SkelyEnemy2;
@@ -42,6 +43,7 @@ public class World2 extends BaseWorld{
         entityManager.addEntity(new MortyEnemy2(handler, 192, (64*30)-256));
         entityManager.addEntity(new InjuredMorty(handler, 360, 0));
         entityManager.addEntity(new KalaxianCrystalBlock(handler, 250, 64*30-440));
+        entityManager.addEntity(new MortyAlly(handler, 0, 0));
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
