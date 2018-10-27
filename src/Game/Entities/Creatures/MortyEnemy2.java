@@ -236,7 +236,6 @@ public class MortyEnemy2 extends CreatureBase {
 	public void die() {
 		audioClip2.start();
 		audioClip.close();
-		handler.getWorld().getItemManager().addItem(Item.wizardItem.createNew((int)x + bounds.x,(int)y + bounds.y,1));
 
 	}
 
