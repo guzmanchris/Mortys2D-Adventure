@@ -77,6 +77,7 @@ public class Images {
     public static BufferedImage wizardItem;
     public static BufferedImage[] wizardInstructions;
     public static BufferedImage[] injuredMortyMessages;
+    public static BufferedImage ControlsState;
     
 
 
@@ -161,6 +162,7 @@ public class Images {
             GuardMorty = ImageIO.read(getClass().getResourceAsStream("/Sheets/GuardMorty.png"));
             InjuredMorty = ImageIO.read(getClass().getResourceAsStream("/Sheets/injuredMorty.png"));
             wizardItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardItem.png"));
+            ControlsState = ImageIO.read(getClass().getResourceAsStream("/Sheets/Controls.png"));
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
