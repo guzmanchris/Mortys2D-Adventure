@@ -22,6 +22,7 @@ import Game.Items.Item;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
+import Worlds.World2;
 
 
 public class MortyAlly extends CreatureBase {
@@ -140,6 +141,10 @@ public class MortyAlly extends CreatureBase {
 					spawn();
 				}
 			}
+			 if(handler.getWorld() instanceof World2 && itemUsed()) {
+			    	visible=true;
+				 	spawn();
+			    }
 		}
 
 	}
@@ -176,7 +181,7 @@ public class MortyAlly extends CreatureBase {
 	         }
 		   
 			     for(EntityBase e : handler.getWorld().getEntityManager().getEntities()){
-			    	 if(e instanceof SkelyEnemy){ 
+			    	 if(e instanceof SkelyEnemy || e instanceof SkelyEnemy2 || e instanceof MortyEnemy || e instanceof MortyEnemy2){ 
 			    		 
 				    	if(e.getCollisionBounds(0, 0).intersects(ar)) {	
 			    		 checkAttacks();
@@ -251,11 +256,21 @@ public class MortyAlly extends CreatureBase {
 	
 	public boolean enemiesInWorld() {
 		for(EntityBase e :  handler.getWorld().getEntityManager().getEntities()) {
-			if(e instanceof SkelyEnemy) {
+			if(e instanceof SkelyEnemy || e instanceof SkelyEnemy2 || e instanceof MortyEnemy || e instanceof MortyEnemy2 ) {
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public boolean itemUsed() {
+		    	for(Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
+		    		if(i.getName() == "Wizard" && i.getCount()<=0) {
+		    			return false;
+		    		}
+		    	}
+		    
+		  return true;
 	}
 	
 	@Override
