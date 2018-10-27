@@ -30,7 +30,7 @@ public class World2 extends BaseWorld{
         entityManager.addEntity(new CoinBlock(handler, 320, 858));
         entityManager.addEntity(new Door(handler, 100, 0,caveWorld));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
-        //entityManager.addEntity(new InjuredMorty(handler, 360, 0));
+        entityManager.addEntity(new InjuredMorty(handler, 360, 0));
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
