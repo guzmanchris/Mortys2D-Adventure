@@ -38,6 +38,7 @@ public class Player extends CreatureBase {
     private Boolean LaunchedFireBallU=false;
     private Boolean LaunchedFireBallD=false;
     private Boolean attacking=false;
+    private Boolean IP=false;
 
     private int animWalkingSpeed = 150;
     private int animFireSpeed = 250;
@@ -45,6 +46,7 @@ public class Player extends CreatureBase {
     private int FireMove = 0;
     private int movexp,moveyp,movexn,moveyn,tempmoveyp,tempmovexn,tempmoveyn,tempmovexp,fy,fx;
 
+    private int ticks=0;
     //spells
 
 
@@ -75,6 +77,7 @@ public class Player extends CreatureBase {
 
     @Override
     public void tick() {
+    	ticks++;
         //Animations
         animDown.tick();
         animUp.tick();
@@ -88,6 +91,11 @@ public class Player extends CreatureBase {
         //Debugging Tool (Resets health)
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_SHIFT)) {
         	health = 75;
+        }
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_I) && ticks>10){
+        	IP= !IP;
+        	ticks=0;
         }
         
         for(Item i : inventory.getInventoryItems()){
@@ -156,8 +164,11 @@ public class Player extends CreatureBase {
             FireBallAttack(g);
 
         }
-
-
+        
+        if(IP){
+        	g.drawImage(Images.Instructions, 0, 0, null);
+        	
+        }
 
 
         g.setColor(Color.BLACK);

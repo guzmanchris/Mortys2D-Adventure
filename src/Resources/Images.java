@@ -42,6 +42,7 @@ public class Images {
     public static BufferedImage inventory;
     public static BufferedImage title;
     public static BufferedImage instructions;
+    public static BufferedImage Instructions;
     public static BufferedImage gameOver;
     public static BufferedImage gameWon;
     public static BufferedImage door;
@@ -164,6 +165,7 @@ public class Images {
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
             title = ImageIO.read(getClass().getResourceAsStream("/Sheets/RickAndMortyMenu.png"));
             instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/instructionsState.png"));
+            Instructions = ImageIO.read(getClass().getResourceAsStream("/Sheets/Instrucctions.PNG"));
             gameOver = ImageIO.read(getClass().getResourceAsStream("/Sheets/youAreDead.jpg"));
             gameWon = ImageIO.read(getClass().getResourceAsStream("/Sheets/gameWon.jpg"));
             door = ImageIO.read(getClass().getResourceAsStream("/Sheets/portal.png"));
