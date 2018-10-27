@@ -265,7 +265,7 @@ public class MortyAlly extends CreatureBase {
 	
 	public boolean itemUsed() {
 		    	for(Item i : handler.getWorld().getEntityManager().getPlayer().getInventory().getInventoryItems()) {
-		    		if(i.getName() == "Wizard" && i.getCount()<=0) {
+		    		if(i.getId() == 5 ) {
 		    			return false;
 		    		}
 		    	}
