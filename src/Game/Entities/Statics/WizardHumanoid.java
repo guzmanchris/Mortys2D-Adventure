@@ -5,7 +5,6 @@ import Game.Entities.Creatures.Player;
 import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
-import Worlds.BaseWorld;
 
 import java.awt.*;
 
@@ -15,15 +14,13 @@ public class WizardHumanoid extends StaticEntity {
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
 
-    private BaseWorld world;
     private int keys;
     private int coins;
     private int ticks=0;
     
 
-    public WizardHumanoid(Handler handler, float x, float y,BaseWorld world) {
-        super(handler, x, y, 96, 79);
-        this.world=world;
+    public WizardHumanoid(Handler handler, float x, float y) {
+        super(handler, x, y, 96, 79);;
         health=10000000;
         bounds.x=0;
         bounds.y=0;

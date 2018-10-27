@@ -65,7 +65,19 @@ public class Item {
     }
 
 
-    public void tick(){
+    public Item(Item item) {
+    	  this.texture=item.getTexture();
+          this.id=item.getId();
+          this.name=item.getName();
+          count = DEFAULTCOUNT;
+          this.width=item.getWidth();
+          this.height=item.getHeight();
+
+          bounds = new Rectangle(x,y,ITEMWIDTH,ITEMWEIGHT);
+
+          items[id]=this;
+	}
+	public void tick(){
         if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f,0f).intersects(bounds)){
             pickedUp=true;
             handler.getWorld().getEntityManager().getPlayer().getInventory().addItem(this);

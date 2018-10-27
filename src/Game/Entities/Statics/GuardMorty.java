@@ -5,7 +5,6 @@ import Game.Entities.Creatures.Player;
 import Game.Items.Item;
 import Main.Handler;
 import Resources.Images;
-import Worlds.BaseWorld;
 
 import java.awt.*;
 
@@ -15,15 +14,13 @@ public class GuardMorty extends StaticEntity {
     private Rectangle ir = new Rectangle();
     public Boolean EP = false;
 
-    private BaseWorld world;
     private int keys;
     private int coins;
     private int ticks=0;
     
 
-    public GuardMorty(Handler handler, float x, float y,BaseWorld world) {
+    public GuardMorty(Handler handler, float x, float y) {
         super(handler, x, y, 96, 79);
-        this.world=world;
         health=10000000;
         bounds.x=0;
         bounds.y=0;
@@ -73,7 +70,7 @@ public class GuardMorty extends StaticEntity {
             g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
         }else if(ir.contains(pr)){
         	if(keys>0 || coins>0) {
-	        	g.drawImage(Images.wizardInstructions[0],(int) x+width,(int) y, null);
+	        	g.drawImage(Images.injuredMortyMessages[0],(int) x+width,(int) y, null);
 	            
 	            //Draw Items Required
 	            g.drawImage(Images.keyItem,(int) x+width+8,(int) y+50-16, 32, 32, null);
@@ -99,7 +96,7 @@ public class GuardMorty extends StaticEntity {
 	        				e.setVisible(true);
 	        			}
 	        		}
-	        		g.drawImage(Images.wizardInstructions[1],(int) x+width,(int) y, null);
+	        		g.drawImage(Images.injuredMortyMessages[1],(int) x+width,(int) y, null);
 	        	}
         }
 

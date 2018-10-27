@@ -1,5 +1,6 @@
 package Game.Entities.Statics;
 
+import Game.Entities.EntityBase;
 import Game.Entities.Creatures.Player;
 import Game.GameStates.State;
 import Main.Handler;
@@ -30,6 +31,7 @@ public class Door extends StaticEntity {
 
 	private Rectangle ir = new Rectangle();
 	public Boolean EP = false;
+    private int ticks=0;
 
 	private BaseWorld world;
 	
@@ -79,16 +81,14 @@ public class Door extends StaticEntity {
 	@Override
 	public void tick() {
 		if (visible==true){
+			ticks++;
 			portalOpen.start();
 			if(isBeinghurt()){
 				setHealth(10000000);
 			}
-
-			if(handler.getKeyManager().attbut){
-				EP=true;
-
-			}else if(!handler.getKeyManager().attbut){
-				EP=false;
+			if(handler.getKeyManager().attbut  && ticks>=10){
+				EP=!EP;
+				ticks=0;
 			}
 		}
 		else {
@@ -112,16 +112,28 @@ public class Door extends StaticEntity {
 	private void checkForPlayer(Graphics g, Player p) {
 		Rectangle pr = p.getCollisionBounds(0,0);
 
+		if(!ir.contains(pr)) EP = false;
 		if(ir.contains(pr) && !EP){
 			g.drawImage(Images.E,(int) x+width,(int) y+10,32,32,null);
 		}else if(ir.contains(pr) && EP  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_TAB)){
-//			if(handler.getWorld() instanceof World2 && finalQuestComplete) {
-//				State.setState(handler.getGame().gameWonState);
-//			}
+			if(handler.getWorld() instanceof World2 ) {
+				for(EntityBase e : handler.getWorld().getEntityManager().getEntities()) {
+					if(e instanceof InjuredMorty) {
+						if(((InjuredMorty) e).isFinalQuestComplete()) {
+							State.setState(handler.getGame().gameWonState);
+						}
+						else {
+							g.drawImage(Images.injuredMortyMessages[2],(int) x+width,(int) y+10,null);
+						}
+					}
+				}
+			}
+			else {
+				g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
+				g.drawImage(Images.loading,0,0,800,600,null);
+				handler.setWorld(world);
+			}
 			
-			g.drawImage(Images.EP,(int) x+width,(int) y+10,32,32,null);
-			g.drawImage(Images.loading,0,0,800,600,null);
-			handler.setWorld(world);
 
 		}
 

@@ -51,6 +51,7 @@ public class Inventory {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_X)) {
         	if(inventoryItems.size() < Item.totalItems) {
 	        	for(int i=0; i<Item.totalItems; i++) {
+	        			Item item = new Item(Item.items[i]);
 	        			addItem(Item.items[i]);
 	        	}
         	}

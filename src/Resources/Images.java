@@ -70,9 +70,12 @@ public class Images {
     public static BufferedImage attackItem;
     public static BufferedImage Crate;
     public static BufferedImage wizardHumanoid;
+    public static BufferedImage InjuredMorty;
     public static BufferedImage GuardMorty;
     public static BufferedImage wizardItem;
     public static BufferedImage[] wizardInstructions;
+    public static BufferedImage[] injuredMortyMessages;
+    
 
 
     public Images() {
@@ -135,6 +138,7 @@ public class Images {
         FireBallDown = new BufferedImage[6];
         
         wizardInstructions = new BufferedImage[2];
+        injuredMortyMessages = new BufferedImage[3];
 
 
 
@@ -153,6 +157,7 @@ public class Images {
             coinItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/coinItem.png"));
             wizardHumanoid = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardHumanoid.png"));
             GuardMorty = ImageIO.read(getClass().getResourceAsStream("/Sheets/GuardMorty.png"));
+            InjuredMorty = ImageIO.read(getClass().getResourceAsStream("/Sheets/injuredMorty.png"));
             wizardItem = ImageIO.read(getClass().getResourceAsStream("/Sheets/wizardItem.png"));
 
             inventory = ImageIO.read(getClass().getResourceAsStream("/Sheets/guit.png"));
@@ -247,6 +252,10 @@ public class Images {
             
             wizardInstructions[0] = ImageIO.read(getClass().getResource("/Sheets/retrieve.png"));
             wizardInstructions[1] = ImageIO.read(getClass().getResource("/Sheets/continue.png"));
+            
+            injuredMortyMessages[0] = ImageIO.read(getClass().getResource("/Sheets/message.png"));
+            injuredMortyMessages[1] = ImageIO.read(getClass().getResource("/Sheets/youDidIt.png"));
+            injuredMortyMessages[2] = ImageIO.read(getClass().getResource("/Sheets/collect.png"));
 
             numbers[1]= numsheet.crop(17,15,17,22);
             numbers[2]= numsheet.crop(64,16,14,19);
