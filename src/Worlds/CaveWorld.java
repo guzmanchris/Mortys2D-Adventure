@@ -6,6 +6,7 @@ import Game.Entities.Creatures.SkelyEnemy;
 import Game.Entities.Statics.CoinBlock;
 import Game.Entities.Statics.Door;
 import Game.Entities.Statics.GuardMorty;
+import Game.Entities.Statics.Tree;
 import Main.Handler;
 
 /**
@@ -22,6 +23,10 @@ public class CaveWorld extends BaseWorld{
         this.player=player;
         world2 = new World2(handler,"res/Maps/map2.map",player);
         
+        entityManager.addEntity(new Tree(handler,651,867));
+        entityManager.addEntity(new Tree(handler,867,651));
+        entityManager.addEntity(new Tree(handler,128,(64*25)-256));
+        entityManager.addEntity(new Tree(handler,512,64*3));
         entityManager.addEntity(new MortyEnemy(handler, 100, 800));
         entityManager.addEntity(new SkelyEnemy(handler, 1250, 500));
         entityManager.addEntity(new SkelyEnemy(handler, 1000, 500));
